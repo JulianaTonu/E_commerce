@@ -1,4 +1,3 @@
-import { MdStar } from "react-icons/md";
 import img1 from "../../assets/h1.png"
 const Hero = () => {
     return (
