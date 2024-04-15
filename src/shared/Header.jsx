@@ -1,13 +1,14 @@
 import { NavLink } from "react-router-dom"
+import { IoIosCart } from "react-icons/io";
 
 const Header = () => {
    
     const links = <>
-    <li><NavLink to="/">Home</NavLink></li>
+    <li><NavLink to="/" >Home</NavLink></li>
     <li><NavLink to="/category">Category</NavLink></li>
-    <li><NavLink to="/men">Men's</NavLink></li>
-    <li><NavLink to="/womwn">Women's</NavLink></li>
-    <li><NavLink to="/womwn">Kid's</NavLink></li>
+    <li><NavLink to="/men">Mens</NavLink></li>
+    <li><NavLink to="/womwn">Womens</NavLink></li>
+    <li><NavLink to="/kids">Kids</NavLink></li>
     <li><NavLink to="/contact">contact</NavLink></li>
   </>
   return (
@@ -30,8 +31,11 @@ const Header = () => {
     </ul>
   </div>
   <div className="navbar-end">
-  <NavLink to="/cart">cart</NavLink>
-  <a className="btn">Sign In</a>
+  <div className="indicator">
+  <span className="indicator-item badge badge-info ">9+</span> 
+  <p className="mt-4 text-2xl"><IoIosCart /></p>
+</div>
+  <a className="btn btn-primary ms-4">Sign In</a>
   </div>
 </div>
     </div>
