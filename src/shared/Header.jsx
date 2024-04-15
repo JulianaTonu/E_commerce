@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom"
 import { IoIosCart } from "react-icons/io";
-
+import logo from '../assets/logo.png'
 const Header = () => {
    
     const links = <>
@@ -23,8 +23,8 @@ const Header = () => {
       {links}
       </ul>
     </div>
-    <a className="btn btn-ghost normal-case text-xl">LoGo</a>
-  </div>
+<img src={logo} alt="" className="w-28 h-16 md:ml-4" /> 
+ </div>
   <div className="navbar-center hidden lg:flex font-bold text-blue-500">
     <ul className="menu menu-horizontal px-1">
     {links}
