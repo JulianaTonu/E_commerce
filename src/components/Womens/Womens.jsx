@@ -4,8 +4,8 @@ const Womens = () => {
     return (
         <div>
             <div>
-    <img src={coverWomen} alt="" className='w-full lg:h-96'/>
-</div>
+                <img src={coverWomen} alt="" className='w-full lg:h-96' />
+            </div>
         </div>
     );
 };
