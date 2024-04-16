@@ -1,3 +1,4 @@
+import Footer from "../shared/Footer";
 import Header from "../shared/Header";
 import { Outlet } from 'react-router-dom'
 
@@ -6,6 +7,7 @@ const MainLayout = () => {
         <div>
             <Header></Header>
             <Outlet></Outlet>
+            <Footer></Footer>
         </div>
     );
 };
