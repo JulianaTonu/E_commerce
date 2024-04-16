@@ -5,12 +5,12 @@ const Header = () => {
    
     const links = <>
     <li><NavLink to="/" >Home</NavLink></li>
-    <li><NavLink to="/category">Category</NavLink></li>
     <li><NavLink to="/men">Mens</NavLink></li>
-    <li><NavLink to="/womwn">Womens</NavLink></li>
+    <li><NavLink to="/women">Womens</NavLink></li>
     <li><NavLink to="/kids">Kids</NavLink></li>
     <li><NavLink to="/contact">contact</NavLink></li>
   </>
+  
   return (
     <div>
      <div className="navbar bg-base-100 shadow-lg">
