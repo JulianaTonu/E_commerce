@@ -3,6 +3,7 @@ import MainLayout from "../layout/MainLayout";
 import Home from "../components/Home/Home";
 import Mens from "../components/Mens/Mens";
 import Womens from "../components/Womens/Womens";
+import Kids from "../components/Kids/Kids";
 
 export const router =createBrowserRouter([
     {
@@ -20,6 +21,10 @@ export const router =createBrowserRouter([
             {
                 path:"/women",
                 element:<Womens></Womens>
+            },
+            {
+                path:"/kid",
+                element:<Kids></Kids>
             },
         ]
     }

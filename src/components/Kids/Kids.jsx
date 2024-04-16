@@ -1,4 +1,4 @@
-import coverKids from "../../assets/kids/coverk.jpg" 
+import coverKids from "../../assets/kids/coverk.png" 
 const Kids = () => {
     return (
         <div>
