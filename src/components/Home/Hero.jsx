@@ -1,7 +1,7 @@
 import img1 from "../../assets/h1.png"
 const Hero = () => {
     return (
-        <div className="hero w-full min-h-max bg-orange-400">
+        <div className="hero w-full min-h-max bg-[#fca944]">
             <div className="hero-content flex-col lg:flex-row-reverse ">
                 <img src={img1} className="max-w-lg rounded-lg h-96" />
                 <div className="text-start lg:w-1/2">
@@ -19,7 +19,7 @@ const Hero = () => {
                         <div className="font-bold text-lg mb-3">176k <span className="font-normal">Excellent Reviews</span></div>
                     </div>
 
-                    <button className="btn bg-gray-300 ">Shop Now</button>
+                    <button className="p-3 rounded-xl shadow-md text-white font-semibold bg-[#c6720c] hover:bg-[#673f0e]">Shop Now</button>
                 </div>
             </div>
         </div>
