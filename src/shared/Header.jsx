@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import { IoIosCart } from "react-icons/io";
 import logo from '../assets/logo.png'
 const Header = () => {
@@ -32,10 +32,10 @@ const Header = () => {
   </div>
   <div className="navbar-end">
   <div className="indicator">
-  <span className="indicator-item badge badge-warning ">9+</span> 
+  <span className="indicator-item badge  bg-orange-500 text-white ">9+</span> 
   <p className="mt-4 text-2xl"><IoIosCart /></p>
 </div>
-  <a className="btn bg-[#da8214] ms-4">Sign In</a>
+<p className='font-bold bg-orange-500 py-2 px-4 rounded-lg ms-10 text-white  font-serif'><Link to='/login'>Login</Link></p>
   </div>
 </div>
     </div>

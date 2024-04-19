@@ -4,6 +4,7 @@ import Home from "../components/Home/Home";
 import Mens from "../components/Mens/Mens";
 import Womens from "../components/Womens/Womens";
 import Kids from "../components/Kids/Kids";
+import Login from "../components/Login/Login";
 
 export const router =createBrowserRouter([
     {
@@ -25,6 +26,10 @@ export const router =createBrowserRouter([
             {
                 path:"/kid",
                 element:<Kids></Kids>
+            },
+            {
+                path:"/login",
+                element:<Login></Login>
             },
         ]
     }
