@@ -3,7 +3,7 @@ const Login = () => {
     return (
         <div className="hero min-h-screen bg-base-200 shadow-md my-10 shadow-slate-500">
         <div className="hero-content  flex-col lg:flex-row-reverse">
-          <div className="text-center  lg:text-Center bg-orange-400 shadow-lg shadow-slate-500 lg:ms-10 h-[700px] lg:w-[700px] p-4">
+          <div className="text-center  lg:text-Center bg-orange-400 shadow-md shadow-slate-400 lg:ms-10 h-[700px] lg:w-[700px] p-4">
             <h1 className="md:text-5xl text-3xl font-bold  text-white mt-8">Welcome Back</h1>
             <p className="py-6 text-slate-100 lg:px-3">Provident cupiditate voluptatem etin.Quaerat fugiat ut  assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
             <img src={pic} alt="" className='lg:h-80 h-72  mx-auto mt-16' />
@@ -28,7 +28,7 @@ const Login = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn bg-orange-400 text-white">Login</button>
+                <button className="btn bg-orange-400 text-white shadow-md border hover:text-black border-orange-500 shadow-slate-400">Login</button>
               </div>
             </form>
           </div>
