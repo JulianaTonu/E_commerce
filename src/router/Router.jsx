@@ -5,6 +5,7 @@ import Mens from "../components/Mens/Mens";
 import Womens from "../components/Womens/Womens";
 import Kids from "../components/Kids/Kids";
 import Login from "../components/Login/Login";
+import Register from "../components/Register/Register";
 
 export const router =createBrowserRouter([
     {
@@ -30,6 +31,10 @@ export const router =createBrowserRouter([
             {
                 path:"/login",
                 element:<Login></Login>
+            },
+            {
+                path:"/register",
+                element:<Register></Register>
             },
         ]
     }
