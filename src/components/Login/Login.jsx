@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import pic from '../../assets/pproducts/log.png'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import Swal from 'sweetalert2';
+import { FaEye, FaRegEyeSlash } from 'react-icons/fa';
 const Login = () => {
   const { signIn } = useContext(AuthContext)
-
+const [showPassword,setShowPassword] =useState(false)
   
   const handleLogin =e=>{
     e.preventDefault();
@@ -51,8 +52,17 @@ const Login = () => {
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input type="password" placeholder="password" name="password" className="input input-bordered" required />
-                <label className="label">
+                <div className='flex'>
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    placeholder="password"
+                                    name='password'
+                                    className="input input-bordered w-96 flex"
+                                    required />
+                                <span onClick={() => setShowPassword(!showPassword)}
+                                    className='mt-4 ms-2 cursor-pointer font-medium hover:font-bold '>
+                                    {showPassword ? <FaEye /> : <FaRegEyeSlash />}</span>
+                            </div>                <label className="label">
                 <p className=' text-center font-semibold  '>New to this website? Please <Link className='text-orange-500 font-bold' to='/register'>Register</Link></p>
                 </label>
               </div>
