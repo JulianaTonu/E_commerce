@@ -1,6 +1,12 @@
 import { Link } from 'react-router-dom';
 import pic from '../../assets/pproducts/log.png'
+import { useContext } from 'react';
+import { AuthContext } from '../../provider/AuthProvider';
+import Swal from 'sweetalert2';
 const Login = () => {
+  const { signIn } = useContext(AuthContext)
+
+
     return (
         <div className="hero min-h-screen bg-base-200 shadow-md my-10 shadow-slate-500">
         <div className="hero-content  flex-col lg:flex-row-reverse">
@@ -10,20 +16,20 @@ const Login = () => {
             <img src={pic} alt="" className='lg:h-80 h-72  mx-auto mt-16' />
           </div>
           <div className="card shrink-0 w-full max-w-sm   ">
-            <form className="">
+            <form onSubmit={handleLogin} className="">
               <div className="form-control">
               <h1 className="md:text-5xl text-3xl text-orange-500 text-center mb-10 font-bold "> Login</h1>
 
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
-                <input type="email" placeholder="email" className="input input-bordered" required />
+                <input type="email" placeholder="email" name="email" className="input input-bordered" required />
               </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input type="password" placeholder="password" className="input input-bordered" required />
+                <input type="password" placeholder="password" name="password" className="input input-bordered" required />
                 <label className="label">
                 <p className=' text-center font-semibold  '>New to this website? Please <Link className='text-orange-500 font-bold' to='/register'>Register</Link></p>
                 </label>
