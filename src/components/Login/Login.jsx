@@ -6,6 +6,28 @@ import Swal from 'sweetalert2';
 const Login = () => {
   const { signIn } = useContext(AuthContext)
 
+  
+  const handleLogin =e=>{
+    e.preventDefault();
+    const email =e.target.email.value
+    const password =e.target.password.value
+    console.log("login",email,password)
+
+    signIn(email,password)
+    .then(result=>{
+      console.log(result)
+      Swal.fire({
+        position: "top-middle",
+        icon: "success",
+        title: "Successfully Login ",
+        showConfirmButton: false,
+        timer: 1500
+    });
+    })
+    .catch(e=>{
+      console.log(e)
+    })
+  }
 
     return (
         <div className="hero min-h-screen bg-base-200 shadow-md my-10 shadow-slate-500">
