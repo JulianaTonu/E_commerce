@@ -1,5 +1,5 @@
 
-const Item = ({ id, name, image, oldPrice,newPrice}) => {
+const Item = ({  name, image, oldPrice,newPrice}) => {
     return (
         <div className="card w-72 bg-base-100 shadow-xl">
             <figure className=" ">

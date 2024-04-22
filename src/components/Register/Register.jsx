@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 import pic from '../../assets/pproducts/log.png'
-import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useContext, useState } from 'react';
-import auth from '../../firebase/firebase.config';
 import Swal from 'sweetalert2';
 import { FaEye, FaRegEyeSlash } from 'react-icons/fa';
 import { AuthContext } from '../../provider/AuthProvider';

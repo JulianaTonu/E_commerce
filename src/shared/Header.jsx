@@ -1,8 +1,16 @@
 import { Link, NavLink } from "react-router-dom"
 import { IoIosCart } from "react-icons/io";
 import logo from '../assets/logo.png'
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 const Header = () => {
-   
+   const {user,logout} =useContext(AuthContext)
+console.log("user",user)
+   const handleLogOut=()=>{
+    logout()
+    .then(()=>{})
+    .catch(err=>console.error(err))
+   }
     const links = <>
     <li><NavLink to="/" >Home</NavLink></li>
     <li><NavLink to="/men">Mens</NavLink></li>
@@ -33,9 +41,22 @@ const Header = () => {
   <div className="navbar-end">
   <div className="indicator">
   <span className="indicator-item badge  bg-orange-500 text-white ">9+</span> 
-  <p className="mt-4 text-2xl"><IoIosCart /></p>
+  <p className="mt-4 text-2xl "><IoIosCart /></p>
 </div>
+{
+          user?.email ?
+          <>
+         
+         <span className='text-orange-500 font-bold text-lg  font-serif pt-2 mx-2'
+         >{user?.displayName}</span>
+          <span className=''><button className='btn btn-ghost font-bold bg-orange-500 text-white font-serif ms-4' onClick={handleLogOut}>Logout</button></span>
+          </>
+            :
+           <>
 <p className='font-bold bg-orange-500 py-2 px-4 rounded-lg ms-10 text-white  font-serif cursor-pointer'><Link to='/login'>Login</Link></p>
+                </>
+          }
+
   </div>
 </div>
     </div>
@@ -43,3 +64,6 @@ const Header = () => {
 }
 
 export default Header
+
+
+
