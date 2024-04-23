@@ -39,11 +39,11 @@ export const router =createBrowserRouter([
                 element:<Register></Register>
             },
             {
-                path:"/MenItemsdetails/:id",
+                path:"/MenItemsDetails/:id",
                 element:<MenDetails></MenDetails>
             },
             {
-                path:"/Womendetails/:id",
+                path:"/WomenDetails/:id",
                 element:<WomenDetails></WomenDetails>
             },
         ]
