@@ -33,7 +33,23 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-           
+            {/* Newsletter  */}
+            <div>
+                <div className="hero shadow-xl my-4  w-full" >
+                    <div className=" lg:flex  lg:justify-around" >
+                        <img src={pic1} className="lg:w-1/3  rounded-2xl h-80"  />
+                        <div className="py-2 px-4 mt-12">
+                            <h1 className="md:text-4xl text-2xl font-bold mb-4">Subscribe For Online Shopping Update</h1>
+                            <p className="">Provident cupiditate voluptatem et in. Quaerat <br /> fugiat ut assumenda excepturi exercitationem quasi. </p>
+
+                            <label className="input input-bordered flex items-center gap-2 md:w-96 mt-6">
+                                <input type="text" className="grow" placeholder="Enter your email here" />
+                                <span className="badge bg-black text-white  px-4 py-3">Subscribe</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
