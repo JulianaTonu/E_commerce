@@ -40,10 +40,12 @@ export const router =createBrowserRouter([
             },
             {
                 path:"/MenItemsDetails/:id",
+                loader:()=>fetch('products.js'),
                 element:<MenDetails></MenDetails>
             },
             {
                 path:"/WomenDetails/:id",
+                loader:()=>fetch('products.js'),
                 element:<WomenDetails></WomenDetails>
             },
         ]

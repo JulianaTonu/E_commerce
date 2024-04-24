@@ -1,9 +1,9 @@
-import img1 from "../../assets/h1.png"
+import img1 from "../../assets/h3.png"
 const Hero = () => {
     return (
-        <div className="hero w-full min-h-max bg-[#fca944]">
+        <div className="hero w-full min-h-max bg-orange-200">
             <div className="hero-content flex-col lg:flex-row-reverse ">
-                <img src={img1} className="max-w-lg rounded-lg h-96" />
+                <img src={img1} className="max-w-lg w-[400px] h-[500px] rounded-lg " />
                 <div className="text-start lg:w-1/2">
                     <h1 className="text-5xl font-bold">Digital Shopping Hub Junction</h1>
                     <p className="py-6 text-slate-700">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi</p>
@@ -19,7 +19,7 @@ const Hero = () => {
                         <div className="font-bold text-lg mb-3">176k <span className="font-normal">Excellent Reviews</span></div>
                     </div>
 
-                    <button className="p-3 rounded-xl shadow-md text-white font-semibold bg-[#c6720c] hover:bg-[#673f0e]">Shop Now</button>
+                    <button className="p-3 rounded-xl shadow-md text-white font-semibold bg-orange-500 px-8 hover:bg-[#673f0e]">Shop Now</button>
                 </div>
             </div>
         </div>

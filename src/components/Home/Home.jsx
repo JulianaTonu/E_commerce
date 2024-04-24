@@ -1,18 +1,19 @@
 import Hero from "./Hero";
 import Popular from "./PopularProduct/Popular";
-import pic from '../../assets/offer.jpg'
+import pic from '../../assets/offer1.jpg'
+import pic1 from '../../assets/newsletter.png'
 const Home = () => {
     return (
         <div>
             <Hero></Hero>
             <Popular></Popular>
 
-
-            <div className="hero  bg-orange-300 ">
+            {/* //Deal Of the day */}
+            <div className="hero bg-orange-200 my-4 ">
                 <div className="hero-content flex-col lg:flex-row-reverse">
-                    <img src={pic} className="w-1/2 rounded-2xl m-8"/>
+                    <img src={pic} className="lg:w-1/2 rounded-2xl m-8" />
                     <div className="py-2">
-                        <h1 className="text-5xl font-bold mb-4">Deal Of the day</h1>
+                        <h1 className="md:text-5xl text-2xl font-bold mb-4">Deal Of the day</h1>
                         <p className="">Provident cupiditate voluptatem et in. Quaerat <br /> fugiat ut assumenda excepturi exercitationem quasi. <br />In deleniti eaque aut repudiandae et a id nisi.</p>
                         <div className="my-6 flex gap-4">
                             <div className="w-25 text-center bg-white p-4 rounded-lg font-bold text-2xl">
@@ -32,6 +33,8 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+           
+
         </div>
 
     );
