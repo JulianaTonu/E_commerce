@@ -1,16 +1,22 @@
 
 import { useEffect, useState } from 'react';
 import coverWomen from '../../assets/womens/coverWm.jpg'
-import data from '../../assets/popular';
+// import data from '../../assets/popular';
 import WomenItems from './WomenItems';
 const Womens = () => {
     const [womenProducts, setWomenProducts] = useState([]);
 
+
     useEffect(() => {
+        fetch("http://localhost:5000/pro")
+            .then(res => res.json())
+            .then(data => {
+                
         const products = data.filter(product => product.category === 'Female');
         setWomenProducts(products);
-    }, []); // Empty dependency array means this effect runs once on component mount
-
+            })
+    }, [])
+   
     return (
         <div>
             <div>

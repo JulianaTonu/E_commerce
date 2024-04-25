@@ -1,0 +1,170 @@
+[
+  {
+    "id": 1,
+    "productName": "Black & White dress",
+    "img": "https://i.ibb.co/DKVJQKn/k1.png",
+    "oldPrice": 890,
+    "newPrice": 690,
+    "category": "kid"
+  },
+  {
+    "id": 2,
+    "productName": "Black & Red Shirt",
+    "img": "https://i.ibb.co/fMcm5rD/m3.jpg",
+    "oldPrice": 990,
+    "newPrice": 790,
+    "category": "Male"
+  },
+  {
+    "id": 3,
+    "productName": "Dorthy Perkins Dress",
+    "img": "https://i.ibb.co/NpgvYcS/p2.jpg",
+    "oldPrice": 1190,
+    "newPrice": 990,
+    "category": "Female"
+  },
+  {
+    "id": 4,
+    "productName": "White T-Shirt",
+    "img": "https://i.ibb.co/wgnhtN1/k2.png",
+    "oldPrice": 690,
+    "newPrice": 490,
+    "category": "kid"
+  },
+  {
+    "id": 5,
+    "productName": "Burnt Orange coordinates",
+    "img": "https://i.ibb.co/qj1wXp1/p4.jpg",
+    "oldPrice": 590,
+    "newPrice": 390,
+    "category": "Female"
+  },
+  {
+    "id": 6,
+    "productName": "Kids Denim Dress",
+    "img": "https://i.ibb.co/WfPS2nH/k.png",
+    "oldPrice": 690,
+    "newPrice": 490,
+    "category": "kid"
+  },
+  {
+    "id": 7,
+    "productName": "Short Sleeve Dresses",
+    "img": "https://i.ibb.co/GV39gpF/k6.png",
+    "oldPrice": 790,
+    "newPrice": 590,
+    "category": "kid"
+  },
+  {
+    "id": 8,
+    "productName": "Yellow T-shirt",
+    "img": "https://i.ibb.co/qJbzFKq/m2.png",
+    "oldPrice": 290,
+    "newPrice": 190,
+    "category": "Male"
+  },
+  {
+    "id": 9,
+    "productName": "Red off Shoulder Outfit",
+    "img": "https://i.ibb.co/xJC7z3t/p1.jpg",
+    "oldPrice": 890,
+    "newPrice": 690,
+    "category": "Female"
+  },
+  {
+    "id": 10,
+    "productName": "Short Sleeve Dresses",
+    "img": "https://i.ibb.co/9sJ1DXN/k3.png",
+    "oldPrice": 790,
+    "newPrice": 590,
+    "category": "kid"
+  },
+  {
+    "id": 11,
+    "productName": "White T-shirt",
+    "img": "https://i.ibb.co/SdN3pWw/m5.png",
+    "oldPrice": 290,
+    "newPrice": 190,
+    "category": "Male"
+  },
+  {
+    "id": 12,
+    "productName": "Short Sleeve Dresses",
+    "img": "https://i.ibb.co/Y8gVz8M/p3.jpg",
+    "oldPrice": 790,
+    "newPrice": 590,
+    "category": "Female"
+  },
+  {
+    "id": 13,
+    "productName": "Antral Kurti Dress",
+    "img": "https://i.ibb.co/Rvf43wh/p7.jpg",
+    "oldPrice": 290,
+    "newPrice": 190,
+    "category": "Female"
+  },
+  {
+    "id": 14,
+    "productName": "Green T-shirt",
+    "img": "https://i.ibb.co/F0bsrrP/k4.png",
+    "oldPrice": 790,
+    "newPrice": 590,
+    "category": "kid"
+  },
+  {
+    "id": 15,
+    "productName": "Red Dress",
+    "img": "https://i.ibb.co/zN77jjW/k5.png",
+    "oldPrice": 790,
+    "newPrice": 590,
+    "category": "kid"
+  },
+  {
+    "id": 16,
+    "productName": "Colored T shirt",
+    "img": "https://i.ibb.co/4ZtZ3nW/m4.png",
+    "oldPrice": 790,
+    "newPrice": 590,
+    "category": "Male"
+  },
+  {
+    "id": 17,
+    "productName": "Black & White dress",
+    "img": "https://i.ibb.co/DKVJQKn/k1.png",
+    "oldPrice": 890,
+    "newPrice": 690,
+    "category": "kid"
+  },
+  {
+    "id": 18,
+    "productName": "White & Blue Shirt",
+    "img": "https://i.ibb.co/5Mfg8kb/m1.png",
+    "oldPrice": 930,
+    "newPrice": 830,
+    "category": "Male"
+  },
+  {
+    "id": 19,
+    "productName": "Dorthy Perkins Dress",
+    "img": "https://i.ibb.co/NpgvYcS/p2.jpg",
+    "oldPrice": 1190,
+    "newPrice": 990,
+    "category": "Female"
+  },
+  {
+    "id": 20,
+    "productName": "White T-Shirt",
+    "img": "https://i.ibb.co/wgnhtN1/k2.png",
+    "oldPrice": 690,
+    "newPrice": 490,
+    "category": "kid"
+  },
+  {
+    "id": 21,
+    "productName": "Burnt Orange coordinates",
+    "img": "https://i.ibb.co/qj1wXp1/p4.jpg",
+    "oldPrice": 590,
+    "newPrice": 390,
+    "category": "Female"
+  }
+]
