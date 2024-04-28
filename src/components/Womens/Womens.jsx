@@ -1,21 +1,21 @@
-
-import { useEffect, useState } from 'react';
 import coverWomen from '../../assets/womens/coverWm.jpg'
 // import data from '../../assets/popular';
 import WomenItems from './WomenItems';
+import useProduct from '../../hooks/useProduct';
 const Womens = () => {
-    const [womenProducts, setWomenProducts] = useState([]);
+    
+const [product]=useProduct()
+const womenProducts =product.filter(data=>data.category === "Female")
 
-
-    useEffect(() => {
-        fetch("http://localhost:5000/pro")
-            .then(res => res.json())
-            .then(data => {
+    // useEffect(() => {
+    //     fetch("http://localhost:5000/pro")
+    //         .then(res => res.json())
+    //         .then(data => {
                 
-        const products = data.filter(product => product.category === 'Female');
-        setWomenProducts(products);
-            })
-    }, [])
+    //     const products = data.filter(product => product.category === 'Female');
+    //     setWomenProducts(products);
+    //         })
+    // }, [])
    
     return (
         <div>
