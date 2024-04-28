@@ -7,7 +7,7 @@ const WomenDetails = () => {
             <div className="md:w-10/12 ">
                 <img src={img} alt="" className="lg:w-[550px]" />
             </div>
-            <div className="md:ms-5 px-5 my-8 py-8">
+            <div className="md:ms-5 px-5 my-8 pb-8">
                 <h1 className=" text-3xl font-bold ">{productName || "Name Not Available"}</h1>
                 <p className="my-2 text-slate-600">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Laboriosam deserunt similique perspiciatis omnis saepe

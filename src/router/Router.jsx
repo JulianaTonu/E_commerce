@@ -40,8 +40,10 @@ export const router =createBrowserRouter([
             },
             {
                 path:"/MenItemsDetails/:id",
-                loader:()=>fetch('products.json'),
-                element:<MenDetails></MenDetails>
+                element:<MenDetails></MenDetails>,
+                loader:({params})=>fetch(`http://localhost:5000/product/${params.id}`)
+
+                
             },
             {
                 path:"/WomenDetails/:id",
