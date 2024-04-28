@@ -6,16 +6,6 @@ const Womens = () => {
     
 const [product]=useProduct()
 const womenProducts =product.filter(data=>data.category === "Female")
-
-    // useEffect(() => {
-    //     fetch("http://localhost:5000/pro")
-    //         .then(res => res.json())
-    //         .then(data => {
-                
-    //     const products = data.filter(product => product.category === 'Female');
-    //     setWomenProducts(products);
-    //         })
-    // }, [])
    
     return (
         <div>
@@ -30,7 +20,7 @@ const womenProducts =product.filter(data=>data.category === "Female")
                     {womenProducts.map((item) => (
                         <WomenItems
                             key={item.id}
-                            id={item.id}
+                            _id={item._id}
                             image={item.img}
                             item={item}
                             name={item.productName}
