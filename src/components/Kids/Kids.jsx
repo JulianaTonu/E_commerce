@@ -1,16 +1,12 @@
 import coverKids from "../../assets/kids/coverk.png" 
-import { useEffect, useState } from 'react';
-import coverWomen from '../../assets/womens/coverWm.jpg'
-import data from '../../assets/popular';
 import Item from '../Home/PopularProduct/Item';
+import useProduct from "../../hooks/useProduct";
 const Kids = () => {
-    const [kidProducts, setKidProducts] = useState([]);
+    
+const [product]=useProduct()
 
-    useEffect(() => {
-        const products = data.filter(product => product.category === 'kid');
-        setKidProducts(products);
-    }, []); // Empty dependency array means this effect runs once on component mount
-
+const kidProducts =product.filter(item=>item.category === "kid")
+   
     return (
         <div>
             <div>
