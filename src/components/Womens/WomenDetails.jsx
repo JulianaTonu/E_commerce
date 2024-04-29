@@ -22,7 +22,16 @@ const WomenDetails = () => {
             }
             axios.post('http://localhost:5000/carts',cartItem)
             .then(res=>{
-                console.log(res.data)
+                console.log('data',res.data)
+                if(res.data.insertedId){
+                    Swal.fire({
+                        position: "top-middle",
+                        icon: "success",
+                        title: `${productName} added to your cart`,
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                }
             })
         }
 

@@ -3,8 +3,10 @@ import { IoIosCart } from "react-icons/io";
 import logo from '../assets/logo.png'
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import useCart from "../hooks/useCart";
 const Header = () => {
   const { user, logout } = useContext(AuthContext)
+  const [cart]=useCart()
   const handleLogOut = () => {
     logout()
       .then(() => { })
@@ -39,7 +41,7 @@ const Header = () => {
         </div>
         <div className="navbar-end">
           <div className="indicator">
-            <span className="indicator-item badge  bg-orange-500 text-white ">9+</span>
+            <span className="indicator-item badge  bg-orange-500 text-white ">{cart.length}</span>
             <p className="mt-4 text-2xl "><IoIosCart /></p>
           </div>
           {
