@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
-import axios from "axios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const WomenDetails = () => {
     const { _id, productName, img, newPrice, oldPrice } = useLoaderData()
@@ -10,6 +10,7 @@ const WomenDetails = () => {
     const {user}= useContext(AuthContext)
     const navigate =useNavigate()
     const location =useLocation()
+    const axiosSecure=useAxiosSecure()
     const handleAddToCart = product => {
         if(user && user.email){
             //send cart item to the database
@@ -20,7 +21,7 @@ const WomenDetails = () => {
                 img,
                 price:newPrice
             }
-            axios.post('http://localhost:5000/carts',cartItem)
+            axiosSecure.post('/carts',cartItem)
             .then(res=>{
                 console.log('data',res.data)
                 if(res.data.insertedId){
