@@ -1,7 +1,12 @@
 import { useLoaderData } from "react-router-dom";
 
 const WomenDetails = () => {
-    const { productName, img, newPrice, oldPrice } = useLoaderData()
+    const { _id,productName, img, newPrice, oldPrice } = useLoaderData()
+    const products= {_id,productName, img, newPrice, oldPrice }
+
+    const handleAddToCart = product =>{
+        console.log(product)
+    }
     return (
         <div className="md:flex bg-slate-100 mt-4">
             <div className="md:w-10/12 ">
@@ -20,7 +25,7 @@ const WomenDetails = () => {
                 </div>
 
                 <div className="mt-10 text-center  flex justify-start ">
-                <button className="p-3 rounded-xl shadow-md hover:bg-black text-white font-semibold bg-orange-500 px-8  flex text-center">
+                <button onClick={()=>handleAddToCart(products)} className="p-3 rounded-xl shadow-md hover:bg-black text-white font-semibold bg-orange-500 px-8  flex text-center">
                     <span className="flex items-center">Add to cart </span>
                 </button>
                 <button className=" ms-3 p-3 rounded-xl shadow-md  text-white font-semibold bg-black px-10  flex text-center">

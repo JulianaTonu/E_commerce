@@ -20,12 +20,8 @@ const womenProducts =product.filter(data=>data.category === "Female")
                     {womenProducts.map((item) => (
                         <WomenItems
                             key={item.id}
-                            _id={item._id}
-                            image={item.img}
                             item={item}
-                            name={item.productName}
-                            oldPrice={item.oldPrice}
-                            newPrice={item.newPrice}
+                            
                         />
                     ))}
                 </div>

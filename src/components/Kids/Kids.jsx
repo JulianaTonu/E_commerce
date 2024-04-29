@@ -20,7 +20,7 @@ const kidProducts =product.filter(item=>item.category === "kid")
                     {kidProducts.map((item) => (
                         <Item
                             key={item.id}
-                            id={item.id}
+                            _id={item._id}
                             image={item.img}
                             name={item.productName}
                             oldPrice={item.oldPrice}
