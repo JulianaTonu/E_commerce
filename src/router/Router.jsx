@@ -8,6 +8,8 @@ import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
 import MenDetails from "../components/Mens/MenDetails";
 import WomenDetails from "../components/Womens/WomenDetails";
+import Dashboard from "../layout/Dashboard";
+import Cart from "../components/Dashboard/Cart/Cart";
 
 export const router =createBrowserRouter([
     {
@@ -50,6 +52,17 @@ export const router =createBrowserRouter([
                 element:<WomenDetails></WomenDetails>,
                 loader:({params})=>fetch(`http://localhost:5000/product/${params.id}`)
             },
+        ]
+    },
+
+    {
+        path:'dashboard',
+        element:<Dashboard></Dashboard>,
+        children:[
+            {
+                path:'cart',
+                element:<Cart></Cart>
+            }
         ]
     }
 ])

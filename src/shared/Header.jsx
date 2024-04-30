@@ -40,10 +40,12 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end">
+          <Link to='dashboard/cart'>
           <div className="indicator">
             <span className="indicator-item badge  bg-orange-500 text-white ">{cart.length}</span>
             <p className="mt-4 text-2xl "><IoIosCart /></p>
           </div>
+          </Link>
           {
             user?.email ?
               <>
