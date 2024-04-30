@@ -10,6 +10,7 @@ import MenDetails from "../components/Mens/MenDetails";
 import WomenDetails from "../components/Womens/WomenDetails";
 import Dashboard from "../layout/Dashboard";
 import Cart from "../components/Dashboard/Cart/Cart";
+import PrivateRoute from "./PrivateRoute";
 
 export const router =createBrowserRouter([
     {
@@ -57,7 +58,7 @@ export const router =createBrowserRouter([
 
     {
         path:'dashboard',
-        element:<Dashboard></Dashboard>,
+        element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children:[
             {
                 path:'cart',

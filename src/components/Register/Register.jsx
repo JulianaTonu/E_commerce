@@ -8,12 +8,12 @@ import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 
 const Register = () => {
-    const axiosPublic =useAxiosPublic()
-    const { createUser,updateUserProfile } = useContext(AuthContext)
+    const axiosPublic = useAxiosPublic()
+    const { createUser, updateUserProfile } = useContext(AuthContext)
     const [registerError, setRegisterError] = useState('')
     const [showPassword, setShowPassword] = useState(false)
-  const navigate =useNavigate()
-  
+    const navigate = useNavigate()
+
     const handleRegister = e => {
         e.preventDefault();
         const name = e.target.name.value;
@@ -26,36 +26,35 @@ const Register = () => {
             return;
         }
 
-
         //createUser
         createUser(email, password)
             .then(result => {
-                const loggedUser =result.user
-                console.log('loggedUser',loggedUser);
- 
-    updateUserProfile(name,email)
-    .then(()=>{
-        const userInfo={
-            displayName:name,
-            email:email
-        }
-        axiosPublic.post('/users',userInfo)
-        .then(res=>{
-            if(res.data.insertedId){
-                console.log('user added to the database')
-                Swal.fire({
-                    position: "top-middle",
-                    icon: "success",
-                    title: 'User Created Successfully' ,
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-                 navigate('/')
-            }
-        })
-    })
-    .catch(e=>console.error(e))
-  
+                const loggedUser = result.user
+                console.log('loggedUser', loggedUser);
+
+                updateUserProfile(name, email)
+                    .then(() => {
+                        const userInfo = {
+                            displayName: name,
+                            email: email
+                        }
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('user added to the database')
+                                    Swal.fire({
+                                        position: "top-middle",
+                                        icon: "success",
+                                        title: 'User Created Successfully',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate('/')
+                                }
+                            })
+                    })
+                    .catch(e => console.error(e))
+
             })
             .catch(error => {
                 console.error(error)
