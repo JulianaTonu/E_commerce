@@ -6,7 +6,7 @@ const Dashboard = () => {
         <div className="flex">
             <div className="w-64 min-h-screen bg-orange-100">
                 <ul className="menu p-4">
-                    <li><NavLink to='dashboard/cart'>
+                    <li><NavLink to='dashboard/home'>
                         <FaUser></FaUser>
                         User Home</NavLink>
                     </li>
@@ -20,14 +20,24 @@ const Dashboard = () => {
                        Add a Review</NavLink>
                     </li>
                
-                    <li><NavLink to='dashboard/cart'>
+                    <li><NavLink to='dashboard/booking'>
                         <FaList></FaList>
                        My Bookings</NavLink>
+                    </li>
+                    <div className="divider"></div>
+
+                    <li><NavLink to='/'>
+                        <FaUser></FaUser>
+                        Home</NavLink>
+                    </li>
+                    <li><NavLink to='/items'>
+                        <FaUser></FaUser>
+                       Items</NavLink>
                     </li>
                     </ul>
             </div>
 
-            <div className="flex-1">
+            <div className="flex-1 p-8">
                 <Outlet></Outlet>
             </div>
 
