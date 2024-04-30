@@ -1,10 +1,39 @@
 import { FaDeleteLeft } from "react-icons/fa6";
 import useCart from "../../../hooks/useCart";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Cart = () => {
-    const [cart] =useCart()
+    const [cart,refetch] =useCart()
     const totalPrice =cart.reduce((total, item)=>total+item.price, 0)
-    
+    const axiosSecure =useAxiosSecure()
+    const handleDelete=id=>{
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+            
+            axiosSecure.delete(`/carts/${id}`)
+            .then(res=>{
+                if(res.data.deletedCount > 0){
+                    refetch()
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                      });
+        
+                }
+            })
+            }
+          });
+    }
     return (
         <div className="">
             <h1 className="text-center font-semibold text-xl">Total Items : {cart.length}</h1>
@@ -25,9 +54,9 @@ const Cart = () => {
                 </div>
                 <div>
                   <div className="font-semibold text-lg">{item.productName}</div>
+                  <h1>{item._id}</h1>
                   <div className="text-sm opacity-50">Lorem ipsum dolor sit amet, conse</div>
-                  <div className="text-sm opacity-50">Quantity </div>
-                  <button className="text-sm py-2 mt-4 hover:bg-orange-800 rounded-md px-4 bg-black  text-white flex gap-2 items-center">delete<FaDeleteLeft></FaDeleteLeft></button>
+                  <button onClick={()=>handleDelete(item._id)} className="text-sm py-2 mt-4 hover:bg-orange-800 rounded-md px-4 bg-black  text-white flex gap-2 items-center">delete<FaDeleteLeft></FaDeleteLeft></button>
 
                 </div>
               </div>
