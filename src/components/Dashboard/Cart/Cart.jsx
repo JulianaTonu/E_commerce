@@ -7,6 +7,7 @@ const Cart = () => {
     const [cart,refetch] =useCart()
     const totalPrice =cart.reduce((total, item)=>total+item.price, 0)
     const axiosSecure =useAxiosSecure()
+    
     const handleDelete=id=>{
         Swal.fire({
             title: "Are you sure?",
@@ -49,13 +50,13 @@ const Cart = () => {
               <div className="flex  gap-3">
                 <div className="avatar">
                   <div className="mask mask-square  w-28 h-28 ">
-                    <img src={item.img} alt="Avatar Tailwind CSS Component" className=" rounded-md border-2 border-gray-500" />
+                    <img src={item.img} alt="Avatar Tailwind CSS Component" className="w-24 h-24 rounded-md border-2 border-gray-500" />
                   </div>
                 </div>
                 <div>
                   <div className="font-semibold text-lg">{item.productName}</div>
-                  <h1>{item._id}</h1>
                   <div className="text-sm opacity-50">Lorem ipsum dolor sit amet, conse</div>
+                  <h1 className="text-sm opacity-50">{item._id}</h1>
                   <button onClick={()=>handleDelete(item._id)} className="text-sm py-2 mt-4 hover:bg-orange-800 rounded-md px-4 bg-black  text-white flex gap-2 items-center">delete<FaDeleteLeft></FaDeleteLeft></button>
 
                 </div>

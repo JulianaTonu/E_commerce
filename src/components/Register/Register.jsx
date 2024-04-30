@@ -1,15 +1,19 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import pic from '../../assets/pproducts/log.png'
 import { useContext, useState } from 'react';
 import Swal from 'sweetalert2';
 import { FaEye, FaRegEyeSlash } from 'react-icons/fa';
 import { AuthContext } from '../../provider/AuthProvider';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext)
+    const axiosPublic =useAxiosPublic()
+    const { createUser,updateUserProfile } = useContext(AuthContext)
     const [registerError, setRegisterError] = useState('')
     const [showPassword, setShowPassword] = useState(false)
+  const navigate =useNavigate()
+  
     const handleRegister = e => {
         e.preventDefault();
         const name = e.target.name.value;
@@ -26,14 +30,32 @@ const Register = () => {
         //createUser
         createUser(email, password)
             .then(result => {
-                console.log(result.user);
+                const loggedUser =result.user
+                console.log('loggedUser',loggedUser);
+ 
+    updateUserProfile(name,email)
+    .then(()=>{
+        const userInfo={
+            displayName:name,
+            email:email
+        }
+        axiosPublic.post('/users',userInfo)
+        .then(res=>{
+            if(res.data.insertedId){
+                console.log('user added to the database')
                 Swal.fire({
                     position: "top-middle",
                     icon: "success",
-                    title: "User Created Successfully ",
+                    title: 'User Created Successfully' ,
                     showConfirmButton: false,
                     timer: 1500
-                });
+                  });
+                 navigate('/')
+            }
+        })
+    })
+    .catch(e=>console.error(e))
+  
             })
             .catch(error => {
                 console.error(error)
