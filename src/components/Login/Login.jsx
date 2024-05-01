@@ -4,13 +4,14 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { FaEye, FaRegEyeSlash } from 'react-icons/fa';
+import SocialLogin from './SocialLogin';
 const Login = () => {
   const { signIn } = useContext(AuthContext)
   const [showPassword, setShowPassword] = useState(false)
-  const location =useLocation()
+  const location = useLocation()
   const navigate = useNavigate()
 
-  const from =location.state?.from?.pathname || '/' ;
+  const from = location.state?.from?.pathname || '/';
   const handleLogin = e => {
     e.preventDefault();
     const email = e.target.email.value
@@ -27,7 +28,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500
         });
-        navigate(from, {replace:true})
+        navigate(from, { replace: true })
       })
       .catch(e => {
         console.log(e)
@@ -71,11 +72,14 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn bg-orange-400 text-white shadow-md border hover:text-black  border-orange-500 shadow-slate-400">Login</button>
+              <button className="btn bg-orange-400 hover:bg-black text-white shadow-md border text-md  border-orange-500 shadow-slate-400">Login</button>
             </div>
           </form>
+         
+        <SocialLogin />
         </div>
       </div>
+      
     </div>
   );
 };
