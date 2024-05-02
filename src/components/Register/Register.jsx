@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { FaEye, FaRegEyeSlash } from 'react-icons/fa';
 import { AuthContext } from '../../provider/AuthProvider';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
+import SocialLogin from '../Login/SocialLogin';
 
 
 const Register = () => {
@@ -35,7 +36,7 @@ const Register = () => {
                 updateUserProfile(name, email)
                     .then(() => {
                         const userInfo = {
-                            displayName: name,
+                            name: name,
                             email: email
                         }
                         axiosPublic.post('/users', userInfo)
@@ -118,6 +119,7 @@ const Register = () => {
                         registerError && <p className='text-red-500'>{registerError}</p>
                     }
 
+                <SocialLogin/>
                 </div>
             </div>
         </div>
