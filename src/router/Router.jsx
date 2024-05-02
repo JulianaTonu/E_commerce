@@ -10,7 +10,8 @@ import MenDetails from "../components/Mens/MenDetails";
 import WomenDetails from "../components/Womens/WomenDetails";
 import Dashboard from "../layout/Dashboard";
 import Cart from "../components/Dashboard/Cart/Cart";
-import PrivateRoute from "./PrivateRoute";
+import AllUsers from "../components/Dashboard/AllUsers/AllUsers";
+// import PrivateRoute from "./PrivateRoute";
 
 export const router =createBrowserRouter([
     {
@@ -58,11 +59,15 @@ export const router =createBrowserRouter([
 
     {
         path:'dashboard',
-        element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        element:<Dashboard></Dashboard>,
         children:[
             {
-                path:'cart',
+                path:'dashboard/cart',
                 element:<Cart></Cart>
+            },
+            {
+                path:'dashboard/allUsers',
+                element:<AllUsers></AllUsers>
             }
         ]
     }

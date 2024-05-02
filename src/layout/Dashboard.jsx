@@ -1,12 +1,44 @@
-import { FaAddressBook, FaList, FaShoppingCart, FaUser } from "react-icons/fa";
+import { FaAddressBook, FaList, FaShoppingCart, FaUser, FaUsers } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
+    const isAdmin =true;
     return (
         <div className="flex">
             <div className="w-64 min-h-screen bg-orange-100">
                 <ul className="menu p-4">
-                    <li><NavLink to='dashboard/home'>
+                    
+                    
+                {
+    isAdmin ? <>
+    <li className="hover:text-orange-500"><NavLink to='dashboard/adminHome'>
+                        <FaUser></FaUser>
+                        Admin Home</NavLink>
+                    </li>
+                    <li className="hover:text-orange-500">
+                        <NavLink to='dashboard/cart'>
+                        <FaShoppingCart></FaShoppingCart>
+                        My Cart</NavLink>
+                    </li>
+                    <li className="hover:text-orange-500"
+                    ><NavLink to='dashboard/manageBooking'>
+                        <FaList></FaList>
+                       Manage Items</NavLink>
+                    </li>   
+                    <li className="hover:text-orange-500 "
+                    ><NavLink to='dashboard/manageItem'>
+                        <FaAddressBook></FaAddressBook>
+                       Manage Bookings</NavLink>
+                    </li>          
+                    <li className="hover:text-orange-500 "
+                    ><NavLink to='dashboard/allUsers'>
+                        <FaUsers></FaUsers>
+                       All Users</NavLink>
+                    </li>
+    </> 
+    :
+    <>
+    <li><NavLink to='dashboard/home'>
                         <FaUser></FaUser>
                         User Home</NavLink>
                     </li>
@@ -24,6 +56,10 @@ const Dashboard = () => {
                         <FaList></FaList>
                        My Bookings</NavLink>
                     </li>
+    </>
+}
+
+
                     <div className="divider"></div>
 
                     <li><NavLink to='/'>
