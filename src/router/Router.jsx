@@ -11,63 +11,78 @@ import WomenDetails from "../components/Womens/WomenDetails";
 import Dashboard from "../layout/Dashboard";
 import Cart from "../components/Dashboard/Cart/Cart";
 import AllUsers from "../components/Dashboard/AllUsers/AllUsers";
+import AdminDashboard from "../components/Dashboard/AdminDashboard/AdminDashboard";
+import AddItems from "../components/Dashboard/AddItems/AddItems";
 // import PrivateRoute from "./PrivateRoute";
 
-export const router =createBrowserRouter([
+export const router = createBrowserRouter([
     {
-        path:"/",
-        element:<MainLayout></MainLayout>,
-        children:[
+        path: "/",
+        element: <MainLayout></MainLayout>,
+        children: [
             {
-                path:"/",
-                element:<Home></Home>
+                path: "/",
+                element: <Home></Home>
             },
             {
-                path:"/men",
-                element:<Mens></Mens>
+                path: "/men",
+                element: <Mens></Mens>
             },
             {
-                path:"/women",
-                element:<Womens></Womens>
+                path: "/women",
+                element: <Womens></Womens>
             },
             {
-                path:"/kid",
-                element:<Kids></Kids>
+                path: "/kid",
+                element: <Kids></Kids>
             },
             {
-                path:"/login",
-                element:<Login></Login>
+                path: "/login",
+                element: <Login></Login>
             },
             {
-                path:"/register",
-                element:<Register></Register>
+                path: "/register",
+                element: <Register></Register>
             },
             {
-                path:"/MenItemsDetails/:id",
-                element:<MenDetails></MenDetails>,
-                loader:({params})=>fetch(`http://localhost:5000/product/${params.id}`)
+                path: "/MenItemsDetails/:id",
+                element: <MenDetails></MenDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
 
-                
+
             },
             {
-                path:"/WomenDetails/:id",
-                element:<WomenDetails></WomenDetails>,
-                loader:({params})=>fetch(`http://localhost:5000/product/${params.id}`)
+                path: "/WomenDetails/:id",
+                element: <WomenDetails></WomenDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
             },
         ]
     },
 
     {
-        path:'dashboard',
-        element:<Dashboard></Dashboard>,
-        children:[
+        path: 'dashboard',
+        element: <Dashboard></Dashboard>,
+        children: [
+            //normal users
             {
-                path:'dashboard/cart',
-                element:<Cart></Cart>
+                path: 'dashboard/cart',
+                element: <Cart></Cart>
+            },
+
+            //admin
+
+            {
+                path: 'adaItems',
+                element: <AddItems></AddItems>
             },
             {
-                path:'dashboard/allUsers',
-                element:<AllUsers></AllUsers>
+                path: 'adminHome',
+                element: <AdminDashboard></AdminDashboard>
+            },
+
+            {
+                path: 'allUsers',
+                element: <AllUsers></AllUsers>
             }
         ]
     }

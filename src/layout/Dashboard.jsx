@@ -11,7 +11,7 @@ const Dashboard = () => {
                     
                 {
     isAdmin ? <>
-    <li className="hover:text-orange-500"><NavLink to='dashboard/adminHome'>
+    <li className="hover:text-orange-500"><NavLink to='adminHome'>
                         <FaUser></FaUser>
                         Admin Home</NavLink>
                     </li>
@@ -21,17 +21,17 @@ const Dashboard = () => {
                         My Cart</NavLink>
                     </li>
                     <li className="hover:text-orange-500"
-                    ><NavLink to='dashboard/manageBooking'>
+                    ><NavLink to='adaItems'>
                         <FaList></FaList>
-                       Manage Items</NavLink>
+                       Add Items</NavLink>
                     </li>   
                     <li className="hover:text-orange-500 "
-                    ><NavLink to='dashboard/manageItem'>
+                    ><NavLink to='manageBookings'>
                         <FaAddressBook></FaAddressBook>
                        Manage Bookings</NavLink>
                     </li>          
                     <li className="hover:text-orange-500 "
-                    ><NavLink to='dashboard/allUsers'>
+                    ><NavLink to='allUsers'>
                         <FaUsers></FaUsers>
                        All Users</NavLink>
                     </li>
