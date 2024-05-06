@@ -1,9 +1,25 @@
 import { useForm } from "react-hook-form";
 import { MdAddCircle } from "react-icons/md";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddItems = () => {
     const { register, handleSubmit } = useForm()
-    const onSubmit = (data) => console.log(data)
+    const axiosPublic = useAxiosPublic()
+
+    const onSubmit = async (data) => {
+        console.log('addItem:', data);
+        //image Upload
+        const imageFile = { image: data.img[0] }
+        const res = await axiosPublic.post(image_hosting_api, imageFile,{
+            headers:{
+                'content-type':'multipart/form-data'
+            }
+        });
+        console.log('imageeee',res.data)
+    }
     return (
         <div>
             <h1 className="font-bold text-3xl mb-7">Add Item</h1>
@@ -18,18 +34,18 @@ const AddItems = () => {
                         </div>
                         <input
                             type="text"
-                            {...register("name")}
+                            {...register("productName", { required: true })}
                             placeholder="Type product name"
                             className="input input-bordered w-full" />
                     </label>
                     {/* //Cagtegory */}
-                    <label className="form-control w-full md:my-2">
+                    <label className="form-control w-full ">
                         <div className="label">
                             <span className="label-text">Category</span>
                         </div>
-                        <select {...register("category")}
+                        <select defaultValue='default' {...register("category")}
                             className="select select-bordered w-full ">
-                            <option disabled selected>Select a category</option>
+                            <option value='default' disabled selected>Select a category</option>
                             <option value="Female">Female</option>
                             <option value="Male">Male</option>
                             <option value="kid">kid</option>
@@ -37,7 +53,7 @@ const AddItems = () => {
                     </label>
                 </div>
                 <div className="flex md:gap-2">
-                {/* //oldPrice */}
+                    {/* //oldPrice */}
                     <label className="form-control w-full">
                         <div className="label">
                             <span className="label-text">Old Price</span>
@@ -48,8 +64,8 @@ const AddItems = () => {
                             placeholder="Type Old Price"
                             className="input input-bordered w-full" />
                     </label>
-                {/* //newPrice */}
-                    <label className="form-control w-full md:my-2 ">
+                    {/* //newPrice */}
+                    <label className="form-control w-full  ">
                         <div className="label">
                             <span className="label-text">New Price</span>
                         </div>
@@ -60,30 +76,31 @@ const AddItems = () => {
                             className="input input-bordered w-full" />
                     </label>
                 </div>
-{/* details  */}
-{/* //newPrice */}
-<label className="form-control w-full  mb-6">
-                        <div className="label">
-                            <span className="label-text">Product Details</span>
-                        </div>
-                        <textarea 
+                {/* details  */}
+                <label className="form-control w-full  mb-6">
+                    <div className="label">
+                        <span className="label-text">Product Details</span>
+                    </div>
+                    <textarea
                         {...register("details")}
-                        className="textarea textarea-bordered h-24" 
-                        placeholder="Product details">                            
-                        </textarea>
-                    </label>
+                        className="textarea textarea-bordered h-24"
+                        placeholder="Product details">
+                    </textarea>
+                </label>
 
-<div className="form-control w-full  mb-6">
-<input type="file" className="file-input file-input-bordered w-full max-w-xs" />
+                <div className="form-control w-full  mb-6">
+                    <input
+                        {...register("img")}
+                        type="file"
+                        className="file-input file-input-bordered w-full max-w-xs" />
 
-</div>
+                </div>
 
-<div className="mt-10 text-center  flex justify-center">
-                <button type="submit" className="p-3 rounded-xl shadow-md bg-slate-900 hover:bg-slate-100 hover:text-black hover:bottom-10 text-white font-semibold px-8  flex text-center">
-                    <span className="flex items-center">Add Item <p className="ml-3 animate-pulse"><MdAddCircle/></p></span>
-                </button>
-            </div>
-                <input className=""  />
+                <div className="mt-10 text-center  flex justify-center">
+                    <button type="submit" className="p-3 rounded-xl shadow-md bg-slate-900 hover:bg-slate-100 hover:text-black hover:bottom-10 text-white font-semibold px-8  flex text-center">
+                        <span className="flex items-center">Add Item <p className="ml-3 animate-pulse"><MdAddCircle /></p></span>
+                    </button>
+                </div>
             </form>
         </div>
     );
