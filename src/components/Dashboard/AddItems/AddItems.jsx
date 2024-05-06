@@ -1,25 +1,54 @@
 import { useForm } from "react-hook-form";
 import { MdAddCircle } from "react-icons/md";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddItems = () => {
-    const { register, handleSubmit } = useForm()
-    const axiosPublic = useAxiosPublic()
+    const { register, handleSubmit } = useForm();
+    const axiosPublic = useAxiosPublic(); // Assuming this hook returns an axios instance
+    const axiosSecure = useAxiosSecure(); // Assuming this hook returns an axios instance
 
     const onSubmit = async (data) => {
-        console.log('addItem:', data);
-        //image Upload
-        const imageFile = { image: data.img[0] }
-        const res = await axiosPublic.post(image_hosting_api, imageFile,{
-            headers:{
-                'content-type':'multipart/form-data'
+        try {
+            // Upload Image
+            const imageFile = new FormData();
+            imageFile.append("image", data.img[0]);
+            const imageUploadResponse = await axiosPublic.post(image_hosting_api, imageFile);
+
+            if (imageUploadResponse.data.success) {
+                // If image upload is successful, create product object
+                const product = {
+                    productName: data.productName,
+                    category: data.category,
+                    oldPrice: data.oldPrice,
+                    newPrice: data.newPrice,
+                    details: data.details,
+                    img: imageUploadResponse.data.data.display_url
+                };
+
+                // Post product to the server
+                const productResponse = await axiosSecure.post('/product', product);
+
+                if (productResponse.data.insertedId) {
+                    // If product insertion is successful, show success message
+                    Swal.fire({
+                        position: "top-middle",
+                        icon: "success",
+                        title: `${data.productName} has been added.`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
             }
-        });
-        console.log('imageeee',res.data)
-    }
+        } catch (error) {
+            console.error('Error:', error);
+            // Handle error (e.g., show error message)
+        }
+    };
     return (
         <div>
             <h1 className="font-bold text-3xl mb-7">Add Item</h1>
