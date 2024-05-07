@@ -1,15 +1,43 @@
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import useProduct from "../../../hooks/useProduct";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
 const ManageItems = () => {
     const [products] = useProduct();
-
+    const axiosSecure =useAxiosSecure()
     const handleEditProduct = () => {
 
     }
-    const handleDeleteProduct = () => {
+  
 
+
+    const handleDeleteProduct= products =>{
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {            
+            axiosSecure.delete(`/product/${products._id}`)
+            .then(res=>{
+                if(res.data.deletedCount > 0){
+                    // refetch()
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your Product has been deleted.",
+                        icon: "success"
+                      });
+        
+                }
+            })
+            }
+          });
     }
     return (
         <div>
