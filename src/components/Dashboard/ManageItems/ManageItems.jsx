@@ -2,14 +2,15 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import useProduct from "../../../hooks/useProduct";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 const ManageItems = () => {
     const [products, refetch] = useProduct();
     const axiosSecure =useAxiosSecure()
-    const handleEditProduct = () => {
+    // const handleEditProduct = () => {
 
-    }
+    // }
   
 
     const handleDeleteProduct= products =>{
@@ -80,7 +81,7 @@ const ManageItems = () => {
                                 </td>
                                 <td>$ {product.newPrice}</td>
                                 <td className="text-blue-500">
-                                    <button onClick={() => handleEditProduct(product)} className="ms-3"><FaEdit /></button>
+                                    <Link to={`/dashboard/updateItems/${product._id}`}><button  className="ms-3"><FaEdit /></button></Link>
                                 </td>
                                 <td className="text-red-500">
                                     <button onClick={() => handleDeleteProduct(product)} className="ms-3"><FaTrashAlt /></button>

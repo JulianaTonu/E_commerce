@@ -15,6 +15,7 @@ import AdminDashboard from "../components/Dashboard/AdminDashboard/AdminDashboar
 import AddItems from "../components/Dashboard/AddItems/AddItems";
 import AdminRoute from "./AdminRoute";
 import ManageItems from "../components/Dashboard/ManageItems/ManageItems";
+import UpdateItems from "../components/Dashboard/UpdateItems/UpdateItems";
 // import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -71,19 +72,23 @@ export const router = createBrowserRouter([
                 element: <Cart></Cart>
             },
 
-            //admin
-
-            {
-                path: 'addItems',
-                element: <AdminRoute><AddItems></AddItems></AdminRoute>
-            },
+            //admin Only
+            
             {
                 path: 'adminHome',
                 element: <AdminDashboard></AdminDashboard>
             },
             {
+                path: 'addItems',
+                element: <AdminRoute><AddItems></AddItems></AdminRoute>
+            },
+            {
                 path: 'manageItems',
                 element: <AdminRoute><ManageItems></ManageItems></AdminRoute>
+            },
+            {
+                path: 'updateItems/:id',
+                element: <UpdateItems></UpdateItems>
             },
 
             {
