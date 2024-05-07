@@ -18,6 +18,7 @@ import ManageItems from "../components/Dashboard/ManageItems/ManageItems";
 import UpdateItems from "../components/Dashboard/UpdateItems/UpdateItems";
 import KidDetails from "../components/Kids/KidDetails";
 import ProductDetails from "../components/Home/PopularProduct/ProductDetails";
+import Payment from "../components/Dashboard/Payment/Payment";
 // import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -81,6 +82,11 @@ export const router = createBrowserRouter([
                 path: 'dashboard/cart',
                 element: <Cart></Cart>
             },
+            {
+                path: 'payment',
+                element:<Payment></Payment>
+            },
+
 
             //admin Only
             
