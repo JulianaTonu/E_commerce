@@ -5,13 +5,12 @@ import Swal from "sweetalert2";
 
 
 const ManageItems = () => {
-    const [products] = useProduct();
+    const [products, refetch] = useProduct();
     const axiosSecure =useAxiosSecure()
     const handleEditProduct = () => {
 
     }
   
-
 
     const handleDeleteProduct= products =>{
         Swal.fire({
@@ -26,8 +25,8 @@ const ManageItems = () => {
             if (result.isConfirmed) {            
             axiosSecure.delete(`/product/${products._id}`)
             .then(res=>{
-                if(res.data.deletedCount > 0){
-                    // refetch()
+                if(res.data.deletedCount > 0){                  
+                    refetch()
                     Swal.fire({
                         title: "Deleted!",
                         text: "Your Product has been deleted.",
