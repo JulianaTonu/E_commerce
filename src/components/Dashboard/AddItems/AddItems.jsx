@@ -8,7 +8,7 @@ const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddItems = () => {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit,reset } = useForm();
     const axiosPublic = useAxiosPublic(); // Assuming this hook returns an axios instance
     const axiosSecure = useAxiosSecure(); // Assuming this hook returns an axios instance
 
@@ -24,8 +24,8 @@ const AddItems = () => {
                 const product = {
                     productName: data.productName,
                     category: data.category,
-                    oldPrice: data.oldPrice,
-                    newPrice: data.newPrice,
+                    oldPrice: parseFloat(data.oldPrice),
+                    newPrice: parseFloat(data.newPrice),
                     details: data.details,
                     img: imageUploadResponse.data.data.display_url
                 };
@@ -34,6 +34,7 @@ const AddItems = () => {
                 const productResponse = await axiosSecure.post('/product', product);
 
                 if (productResponse.data.insertedId) {
+                    reset()
                     // If product insertion is successful, show success message
                     Swal.fire({
                         position: "top-middle",

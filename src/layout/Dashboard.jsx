@@ -67,6 +67,11 @@ const Dashboard = () => {
                                         </NavLink>
                                     </li>
                                     <li className="hover:text-orange-500">
+                                        <NavLink to='manageItems'>
+                                            <FaAddressBook /> Manage Items
+                                        </NavLink>
+                                    </li>
+                                    <li className="hover:text-orange-500">
                                         <NavLink to='manageBookings'>
                                             <FaAddressBook /> Manage Bookings
                                         </NavLink>

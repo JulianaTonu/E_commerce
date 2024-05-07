@@ -12,7 +12,7 @@ const useProduct = () => {
                 setLoading(false)
             })
     }, [])
-    return [product, loading]
+    return [product,loading]
 }
 
 export default useProduct;
