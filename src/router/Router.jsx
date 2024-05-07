@@ -72,7 +72,7 @@ export const router = createBrowserRouter([
             //admin
 
             {
-                path: 'adaItems',
+                path: 'addItems',
                 element: <AddItems></AddItems>
             },
             {
