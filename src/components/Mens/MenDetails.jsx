@@ -1,8 +1,60 @@
 
-import { useLoaderData} from "react-router-dom";
+import { useContext } from "react";
+import { useLoaderData, useLocation, useNavigate} from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../provider/AuthProvider";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MenDetails = () => {
-    const { productName, img, newPrice, oldPrice } = useLoaderData()
+    const { _id, productName, img, newPrice, oldPrice } = useLoaderData()
+    const products = { _id, productName, img, newPrice, oldPrice }
+    const {user}= useContext(AuthContext)
+    const navigate =useNavigate()
+    const location =useLocation()
+    const axiosSecure=useAxiosSecure()
+    const handleAddToCart = product => {
+        if(user && user.email){
+            //send cart item to the database
+            const cartItem ={
+                proId:_id,
+                email:user.email,
+                productName,
+                img,
+                price:newPrice
+            }
+            axiosSecure.post('/carts',cartItem)
+            .then(res=>{
+                console.log('data',res.data)
+                if(res.data.insertedId){
+                    Swal.fire({
+                        position: "top-middle",
+                        icon: "success",
+                        title: `${productName} added to your cart`,
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                }
+            })
+        }
+
+        else{
+            Swal.fire({
+                title: "Sorry! You are not logged In",
+                text: "Please Login to add to the cart",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, login!"
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  //send the user to the login page
+                  navigate('/login',{state:{from:location}})
+                }
+              });
+        }
+        console.log(product)
+    }
     return (
         <div className="md:flex bg-slate-100 mt-4">
         <div className="md:w-10/12 ">
@@ -21,7 +73,7 @@ const MenDetails = () => {
             </div>
 
             <div className="mt-10 text-center  flex justify-start ">
-            <button className="p-3 rounded-xl shadow-md hover:bg-black text-white font-semibold bg-orange-500 px-8  flex text-center">
+            <button onClick={() => handleAddToCart(products)} className="p-3 rounded-xl shadow-md hover:bg-black text-white font-semibold bg-orange-500 px-8  flex text-center">
                 <span className="flex items-center">Add to cart </span>
             </button>
             <button className=" ms-3 p-3 rounded-xl shadow-md  text-white font-semibold bg-black px-10  flex text-center">
