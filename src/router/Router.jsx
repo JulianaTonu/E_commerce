@@ -16,6 +16,7 @@ import AddItems from "../components/Dashboard/AddItems/AddItems";
 import AdminRoute from "./AdminRoute";
 import ManageItems from "../components/Dashboard/ManageItems/ManageItems";
 import UpdateItems from "../components/Dashboard/UpdateItems/UpdateItems";
+import KidDetails from "../components/Kids/KidDetails";
 // import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -57,6 +58,11 @@ export const router = createBrowserRouter([
             {
                 path: "/WomenDetails/:id",
                 element: <WomenDetails></WomenDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
+            },
+            {
+                path: "/kidDetails/:id",
+                element: <KidDetails></KidDetails>,
                 loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
             },
         ]
