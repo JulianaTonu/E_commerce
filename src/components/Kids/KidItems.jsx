@@ -2,8 +2,7 @@ import { Link } from "react-router-dom";
 
 
 const KidItems = ({item}) => {
-    const { _id, productName, img, oldPrice,newPrice}=item
-    console.log('items',name)
+    const { _id, productName, img, oldPrice,newPrice}=item  
     return (
         <div className="card w-72  ">
             <figure className=" ">
@@ -11,7 +10,6 @@ const KidItems = ({item}) => {
             </figure>
             <div className="p-2 ms-4  text-center">
                 <h2 className="font-bold text-xl">{productName}</h2>
-                <h2 className="font-bold text-2xl">ff</h2>
                 <div className="rating">
                     <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                     <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked />

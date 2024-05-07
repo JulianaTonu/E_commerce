@@ -1,11 +1,22 @@
 import { FaAddressBook, FaList, FaShoppingCart, FaUser, FaUsers } from "react-icons/fa";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 // import useAdmin from "../hooks/useAdmin";
 import useAdmin from "../hooks/useAdmin"
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 
 const Dashboard = () => {
- 
+    const { logout } = useContext(AuthContext)
+    const navigate = useNavigate()
+   
+    const handleLogOut = () => {
+      logout()
+        .then(() => { })
+        .catch(err => console.error(err))
+        navigate('/login')
+
+    }
 
     const [ isAdmin, isAdminLoading ] = useAdmin();
     console.log('dashboard', isAdmin, isAdminLoading);
@@ -38,7 +49,7 @@ const Dashboard = () => {
           </a>
         </li>
         <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
+        <li><button className="text-orange-700" onClick={handleLogOut}>Logout</button></li>
       </ul>
     </div>
   </div>
