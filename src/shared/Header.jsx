@@ -4,9 +4,11 @@ import logo from '../assets/logo.png'
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 const Header = () => {
   const { user, logout } = useContext(AuthContext)
   const [cart]=useCart()
+  const [isAdmin] =useAdmin()
   const handleLogOut = () => {
     logout()
       .then(() => { })
@@ -17,7 +19,11 @@ const Header = () => {
     <li><NavLink to="/men">Mens</NavLink></li>
     <li><NavLink to="/women">Womens</NavLink></li>
     <li><NavLink to="/kid">Kids</NavLink></li>
-    <li><NavLink to="/contact">contact</NavLink></li>
+    {user && isAdmin && <li><NavLink to="/dashboard/adminHome">Dashboard</NavLink></li>
+    }
+    {user && !isAdmin && <li ><NavLink to="/dashboard/userDashboard">Dashboard</NavLink></li>
+    }
+    
   </>
 
   return (

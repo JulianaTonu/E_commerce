@@ -20,6 +20,7 @@ import KidDetails from "../components/Kids/KidDetails";
 import ProductDetails from "../components/Home/PopularProduct/ProductDetails";
 import Payment from "../components/Dashboard/Payment/Payment";
 import PaymentHistory from "../components/Dashboard/PaymentHistory/PaymentHistory";
+import UserDashboard from "../components/Dashboard/UserDashboard/UserDashboard";
 // import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -80,6 +81,10 @@ export const router = createBrowserRouter([
         children: [
             //normal users
             {
+                path: 'userDashboard',
+                element: <UserDashboard></UserDashboard>
+            },
+            {
                 path: 'dashboard/cart',
                 element: <Cart></Cart>
             },
@@ -97,7 +102,7 @@ export const router = createBrowserRouter([
             
             {
                 path: 'adminHome',
-                element: <AdminDashboard></AdminDashboard>
+                element: <AdminRoute><AdminDashboard></AdminDashboard></AdminRoute>
             },
             {
                 path: 'addItems',
