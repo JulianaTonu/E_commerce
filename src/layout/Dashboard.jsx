@@ -2,7 +2,7 @@ import { FaAddressBook, FaList, FaShoppingCart, FaUser, FaUsers } from "react-ic
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 // import useAdmin from "../hooks/useAdmin";
 import useAdmin from "../hooks/useAdmin"
-import { useContext, useEffect, useState } from "react";
+import { useContext,  } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 
 
@@ -10,22 +10,6 @@ const Dashboard = () => {
 
     const { logout, user } = useContext(AuthContext)
     const navigate = useNavigate()
-    const [dateTime, setDateTime] = useState(new Date());
-    console.log('user', user)
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setDateTime(new Date());
-        }, 1000);
-
-        return () => clearInterval(interval);
-    }, []);
-
-    const formatDate = (date) => new Intl.DateTimeFormat('en-US', {
-        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
-        hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true
-    }).format(date);
-
-
 
     const handleLogOut = () => {
         logout()
@@ -42,7 +26,16 @@ const Dashboard = () => {
         return <div>Loading...</div>;
     }
 
-
+    const formatDate = (date) => new Intl.DateTimeFormat('en-US', {
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric'
+    }).format(date);
+    
+    // Usage of formatDate function
+    const dateTime = new Date(); // Example date/time
+    const formattedDate = formatDate(dateTime);
 
 
     return (
@@ -52,13 +45,13 @@ const Dashboard = () => {
                     <a className="font-bold text-4xl text-start ">Dashboard</a>
                 </div>
                 <div className="flex-none gap-2">
+                <div className="form-control">
+                        <input type="text" placeholder="Search" className="input  w-24 md:w-auto" />
+                    </div>
                     <div>
-
-                        <p className="font-semibold">{formatDate(dateTime)}</p>
+                    <p className="font-semibold bg-black text-sm md:me-4 text-white px-2 py-1 rounded-md">{formattedDate}</p>
                     </div>
-                    <div className="form-control">
-                        <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
-                    </div>
+                   
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
