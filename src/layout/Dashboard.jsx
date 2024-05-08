@@ -2,11 +2,27 @@ import { FaAddressBook, FaList, FaShoppingCart, FaUser, FaUsers } from "react-ic
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 // import useAdmin from "../hooks/useAdmin";
 import useAdmin from "../hooks/useAdmin"
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 
 
 const Dashboard = () => {
+    const [dateTime, setDateTime] = useState(new Date());
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setDateTime(new Date());
+      }, 1000);
+  
+      return () => clearInterval(interval);
+    }, []);
+  
+    const formatDate = (date) => new Intl.DateTimeFormat('en-US', {
+      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+      hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true
+    }).format(date);
+
+
     const { logout } = useContext(AuthContext)
     const navigate = useNavigate()
    
@@ -19,12 +35,15 @@ const Dashboard = () => {
     }
 
     const [ isAdmin, isAdminLoading ] = useAdmin();
-    console.log('dashboard', isAdmin, isAdminLoading);
-
+    
     // Display loading indicator if isAdminLoading is true
     if (isAdminLoading) {
         return <div>Loading...</div>;
     }
+
+
+
+    
     return (
         <div>
 <div className="navbar bg-slate-100">
@@ -32,6 +51,10 @@ const Dashboard = () => {
     <a className="font-bold text-4xl text-start ">Dashboard</a>
   </div>
   <div className="flex-none gap-2">
+  <div>
+    
+    <p className="font-semibold">{formatDate(dateTime)}</p>
+  </div>
     <div className="form-control">
       <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
     </div>
@@ -147,3 +170,7 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+
+
+

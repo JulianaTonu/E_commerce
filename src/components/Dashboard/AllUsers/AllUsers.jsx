@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
 
+
 const AllUsers = () => {
     const axiosSecure = useAxiosSecure();
     const { data: users = [], refetch } = useQuery({
@@ -62,6 +63,7 @@ const handleMakeAdmin =user=>{
             <div className="flex justify-evenly">
                 <h2 className="font-semibold text-xl">All Users</h2>
                 <h2 className="font-semibold text-xl">Total Users: {users.length}</h2>
+               
             </div>
 
             <div className="overflow-x-auto my-9">
