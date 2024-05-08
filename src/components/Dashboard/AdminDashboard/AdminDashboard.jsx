@@ -68,6 +68,12 @@ const AdminDashboard = () => {
     })
     return (
         <div>
+              <div className="flex items-center mb-6">           
+            <h2 className="me-3 text-2xl">Hi, Welcome  </h2>
+            <p className="text-4xl capitalize text-orange-600">{
+                user?.displayName ? user.displayName :''
+            }</p>
+        </div>
             <div className="md:flex gap-2">
 
                 <div className="shadow-lg w-64 h-32 p-2 mb-3 bg-yellow-200 flex flex-col items-center justify-center">
