@@ -5,10 +5,10 @@ import { FiUsers } from "react-icons/fi";
 import { AuthContext } from "../../../provider/AuthProvider";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from 'recharts';
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid,PieChart, Pie, Sector, ResponsiveContainer } from 'recharts';
 
 const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
-
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 const AdminDashboard = () => {
     const { user } = useContext(AuthContext)
@@ -48,6 +48,20 @@ const AdminDashboard = () => {
         return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
     };
 
+
+    //custom shape for the pie chart
+    const RADIAN = Math.PI / 180;
+const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+  return (
+    <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+      {`${(percent * 100).toFixed(0)}%`}
+    </text>
+  );
+};
     return (
         <div>
             <div className="md:flex gap-2">
@@ -108,26 +122,26 @@ const AdminDashboard = () => {
 
             <div className="flex">
                 <div className="w-1/2">
-                <BarChart
-      width={500}
-      height={300}
-      data={chartData}
-      margin={{
-        top: 20,
-        right: 30,
-        left: 20,
-        bottom: 5,
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="category" />
-      <YAxis />
-      <Bar dataKey="quantity" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
-        {chartData.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={colors[index % 6]} />
-        ))}
-      </Bar>
-    </BarChart>
+                    <BarChart
+                        width={500}
+                        height={300}
+                        data={chartData}
+                        margin={{
+                            top: 20,
+                            right: 30,
+                            left: 20,
+                            bottom: 5,
+                        }}
+                    >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="category" />
+                        <YAxis />
+                        <Bar dataKey="quantity" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
+                            {chartData.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={colors[index % 6]} />
+                            ))}
+                        </Bar>
+                    </BarChart>
                 </div>
                 <div className="w-1/2"></div>
             </div>
