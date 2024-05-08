@@ -63,15 +63,15 @@ const AdminDashboard = () => {
         );
     };
 
-    const pieChartData =chartData.map(data=>{
-        return {name:data.category, value:data.revenue}
+    const pieChartData = chartData.map(data => {
+        return { name: data.category, value: data.revenue }
     })
     return (
         <div>
             <div className="md:flex gap-2">
 
-                <div className="shadow-lg w-64 p-2 mb-3 bg-yellow-200 flex flex-col items-center justify-center">
-                    <h1 className="text-3xl gap-2 mt-3">{stats?.revenue}</h1>
+                <div className="shadow-lg w-64 h-32 p-2 mb-3 bg-yellow-200 flex flex-col items-center justify-center">
+                    <h1 className="text-3xl gap-2 my-3">{stats?.revenue}</h1>
                     <div className="flex justify-between w-full">
                         <div>
                             <h1 className="text-xl">Total Revenue</h1>
@@ -83,7 +83,7 @@ const AdminDashboard = () => {
                     </div>
                 </div>
                 <div className="shadow-lg w-64 p-2 mb-3 bg-green-200 flex flex-col items-center justify-center">
-                    <h1 className="text-3xl gap-2 mt-3">{stats?.orders}</h1>
+                    <h1 className="text-3xl gap-2 my-3">{stats?.orders}</h1>
                     <div className="flex justify-between w-full">
                         <div>
                             <h1 className="text-xl">Total Orders</h1>
@@ -96,7 +96,7 @@ const AdminDashboard = () => {
                 </div>
 
                 <div className="shadow-lg w-64 p-2 mb-3 bg-red-200 flex flex-col items-center justify-center">
-                    <h1 className="text-3xl gap-2 mt-3">{stats?.users}</h1>
+                    <h1 className="text-3xl gap-2 my-3">{stats?.users}</h1>
                     <div className="flex justify-between w-full">
                         <div>
                             <h1 className="text-xl">Total Customer</h1>
@@ -110,7 +110,7 @@ const AdminDashboard = () => {
 
 
                 <div className="shadow-lg w-64 p-2 mb-3 bg-blue-200 flex flex-col items-center justify-center">
-                    <h1 className="text-3xl gap-2 mt-3">{stats?.products}</h1>
+                    <h1 className="text-3xl gap-2 my-3">{stats?.products}</h1>
                     <div className="flex justify-between w-full">
                         <div>
                             <h1 className="text-xl">Total Products</h1>
@@ -124,8 +124,8 @@ const AdminDashboard = () => {
 
             </div>
 
-            <div className="md:flex">
-                <div className="md:w-1/2 md:mt-14">
+            <div className="md:flex gap-4">
+                <div className="md:w-1/2 md:mt-5 py-2 rounded-md bg-slate-100 ">
                     <BarChart
                         width={460}
                         height={400}
@@ -147,26 +147,26 @@ const AdminDashboard = () => {
                         </Bar>
                     </BarChart>
                 </div>
-                <div className="w-1/2">
-                <PieChart 
-                width={400} 
-                height={400}>
-          <Pie
-            data={pieChartData}
-            cx="50%"
-            cy="50%"
-            labelLine={false}
-            label={renderCustomizedLabel}
-            outerRadius={80}
-            fill="#8884d8"
-            dataKey="value"
-          >
-            {pieChartData.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-            ))}
-          </Pie>
-          <Legend></Legend>
-        </PieChart>
+                <div className="w-1/2 bg-slate-100 mt-5 rounded-md">
+                    <PieChart
+                        width={400}
+                        height={400}>
+                        <Pie
+                            data={pieChartData}
+                            cx="50%"
+                            cy="50%"
+                            labelLine={false}
+                            label={renderCustomizedLabel}
+                            outerRadius={90}
+                            fill="#8884d8"
+                            dataKey="value"
+                        >
+                            {pieChartData.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            ))}
+                        </Pie>
+                        <Legend></Legend>
+                    </PieChart>
                 </div>
             </div>
         </div>
