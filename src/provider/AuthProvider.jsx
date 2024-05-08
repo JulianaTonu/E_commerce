@@ -10,29 +10,29 @@ const AuthProvider = ({ children }) => {
     // const authInfo ={name:'Juliana'}
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
-const axiosPublic =useAxiosPublic()
-    const googleProvider =new GoogleAuthProvider()
+    const axiosPublic = useAxiosPublic()
+    const googleProvider = new GoogleAuthProvider()
 
     //createUser
-    const createUser = (email,password) => {
+    const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
 
     };
 
     //signIN
-    const signIn = (email,password) => {
+    const signIn = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
     //googleSignIN
-    const googleSignIn=()=>{
+    const googleSignIn = () => {
         setLoading(true);
-        return signInWithPopup(auth,googleProvider)
+        return signInWithPopup(auth, googleProvider)
 
     }
 
     //for update profile
     const updateUserProfile = (profile) => {
-        return updateProfile(auth.currentUser,profile)
+        return updateProfile(auth.currentUser, profile)
     }
 
     //logout  
@@ -44,20 +44,21 @@ const axiosPublic =useAxiosPublic()
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             console.log('currentUser', currentUser)
             setUser(currentUser);
-            if(currentUser){
+            if (currentUser) {
                 //get token and store client
-                const userInfo = {email:currentUser.email}
-                axiosPublic.post('/jwt',userInfo)
-                .then(res=>{
-                    if(res.data.token){
-                        localStorage.setItem('access-token', res.data.token)
-                    }
-                })
+                const userInfo = { email: currentUser.email }
+                axiosPublic.post('/jwt', userInfo)
+                    .then(res => {
+                        if (res.data.token) {
+                            localStorage.setItem('access-token', res.data.token)
+                            setLoading(false);
+                        }
+                    })
             }
-            else{
+            else {
                 localStorage.removeItem('access-token')
             }
-            setLoading(false);
+
 
         })
         return () => {

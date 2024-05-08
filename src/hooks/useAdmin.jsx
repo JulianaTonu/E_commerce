@@ -6,19 +6,20 @@ import { AuthContext } from "../provider/AuthProvider";
 
 
 const useAdmin = () => {
-    const {user}=useContext(AuthContext)
-    const axiosSecure =useAxiosSecure();
+    const { user, loading } = useContext(AuthContext)
+    const axiosSecure = useAxiosSecure();
     // const axiosPublic =useAxiosPublic();
 
-    const {data: isAdmin, isPending:isAdminLoading}=useQuery({
-        queryKey:[user?.email, 'isAdmin'],
-        queryFn:async()=>{
-            const res =await axiosSecure.get(`/users/admin/${user.email}`)
-            console.log('useAdmin',res.data)
+    const { data: isAdmin, isPending: isAdminLoading } = useQuery({
+        queryKey: [user?.email, 'isAdmin'],
+        enabled: !loading,
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/users/admin/${user.email}`)
+            console.log('useAdmin', res.data)
             return res.data?.admin
         }
     })
-    return [isAdmin,isAdminLoading]
+    return [isAdmin, isAdminLoading]
 };
 
 export default useAdmin;
