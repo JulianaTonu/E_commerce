@@ -19,6 +19,7 @@ import UpdateItems from "../components/Dashboard/UpdateItems/UpdateItems";
 import KidDetails from "../components/Kids/KidDetails";
 import ProductDetails from "../components/Home/PopularProduct/ProductDetails";
 import Payment from "../components/Dashboard/Payment/Payment";
+import PaymentHistory from "../components/Dashboard/PaymentHistory/PaymentHistory";
 // import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -85,6 +86,10 @@ export const router = createBrowserRouter([
             {
                 path: 'payment',
                 element:<Payment></Payment>
+            },
+            {
+                path: 'paymentHistory',
+                element:<PaymentHistory></PaymentHistory>
             },
 
 
