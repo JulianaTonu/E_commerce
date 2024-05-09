@@ -17,7 +17,7 @@ const AllUsers = () => {
 const handleMakeAdmin =user=>{
     axiosSecure.patch(`/users/admin/${user._id}`)
     .then(res=>{
-        console.log('res',res.data)
+        // console.log('res',res.data)
        if(res.data.modifiedCount > 0){
         refetch()
         Swal.fire({
@@ -60,8 +60,8 @@ const handleMakeAdmin =user=>{
 
     return (
         <div>
-            <div className="flex justify-evenly">
-                <h2 className="font-semibold text-xl">All Users</h2>
+            <div className="flex justify-between">
+                <h2 className=" font-bold text-3xl mb-7">All Users</h2>
                 <h2 className="font-semibold text-xl">Total Users: {users.length}</h2>
                
             </div>

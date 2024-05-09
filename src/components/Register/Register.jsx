@@ -42,7 +42,7 @@ const Register = () => {
                         axiosPublic.post('/users', userInfo)
                             .then(res => {
                                 if (res.data.insertedId) {
-                                    console.log('user added to the database')
+                                    // console.log('user added to the database')
                                     Swal.fire({
                                         position: "top-middle",
                                         icon: "success",

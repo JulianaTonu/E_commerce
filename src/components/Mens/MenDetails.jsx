@@ -6,7 +6,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MenDetails = () => {
-    const { _id, productName, img, newPrice, oldPrice } = useLoaderData()
+    const { _id, productName, img, newPrice, oldPrice,details } = useLoaderData()
     const products = { _id, productName, img, newPrice, oldPrice }
     const {user}= useContext(AuthContext)
     const navigate =useNavigate()
@@ -24,7 +24,7 @@ const MenDetails = () => {
             }
             axiosSecure.post('/carts',cartItem)
             .then(res=>{
-                console.log('data',res.data)
+                // console.log('data',res.data)
                 if(res.data.insertedId){
                     Swal.fire({
                         position: "top-middle",
@@ -62,7 +62,7 @@ const MenDetails = () => {
         </div>
         <div className="md:ms-5 px-5 my-8 pb-8">
             <h1 className=" text-3xl font-bold ">{productName || "Name Not Available"}</h1>
-            <p className="my-2 text-slate-600">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            <p className="my-2 text-slate-600">{details} Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Laboriosam deserunt similique perspiciatis omnis saepe
                 cum? Officiis fugit qui similique enim, quidem ad atque
                 voluptas quo pariatur repellat, aut maiores temporibus.</p>

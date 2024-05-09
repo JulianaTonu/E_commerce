@@ -13,7 +13,7 @@ const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 const AdminDashboard = () => {
     const { user } = useContext(AuthContext)
     const axiosSecure = useAxiosSecure()
-    console.log(user)
+    
 
     const { data: stats = {} } = useQuery({
         queryKey: ['admin-stats'],
@@ -30,7 +30,7 @@ const AdminDashboard = () => {
             return res.data;
         }
     })
-    console.log(chartData)
+    
 
 
     //custom shape for the bar chart
@@ -77,7 +77,7 @@ const AdminDashboard = () => {
             <div className="md:flex gap-2">
 
                 <div className="shadow-lg w-64 h-32 p-2 mb-3 bg-yellow-200 flex flex-col items-center justify-center">
-                    <h1 className="text-3xl gap-2 my-3">{stats?.revenue}</h1>
+                    <h1 className="text-3xl gap-2 my-3">${stats?.revenue}</h1>
                     <div className="flex justify-between w-full">
                         <div>
                             <h1 className="text-xl">Total Revenue</h1>

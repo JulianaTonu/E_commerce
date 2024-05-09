@@ -13,9 +13,9 @@ const CheckoutForm = () => {
     const stripe = useStripe();
     const elements = useElements();
     const axiosSecure = useAxiosSecure();
-    console.log('clientSecret', clientSecret)
+   
     const { user } = useContext(AuthContext)
-    console.log('user', user.email)
+   
     const [carts] = useCart()
     const totalPrice = carts.reduce((total, product) => total + product.price, 0)
     useEffect(() => {
@@ -27,7 +27,7 @@ const CheckoutForm = () => {
     }, [axiosSecure, totalPrice])
 
 
-    console.log('totalPrice', totalPrice)
+    // console.log('totalPrice', totalPrice)
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -90,7 +90,6 @@ const CheckoutForm = () => {
                     status:'pending'
                 }
              const res  =await axiosSecure.post('/payments',payment)
-                console.log('res',res.data)
                 if(res.data?.paymentResult?.insertedId){
                     Swal.fire({
                         position: "top-middle",

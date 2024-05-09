@@ -41,7 +41,7 @@ const ManageItems = () => {
     }
     return (
         <div>
-            <h1> Manage Products {products.length}</h1>
+            <h1 className="font-bold text-3xl mb-7 mb-3"> Total Products: {products.length}</h1>
 
 
             <div className="overflow-x-auto">

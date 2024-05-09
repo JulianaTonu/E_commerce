@@ -47,7 +47,7 @@ const Header = () => {
         </div>
         <div className="navbar-end">
           <Link to='dashboard/dashboard/cart'>
-          <div className="indicator">
+          <div className="indicator me-3">
             <span className="indicator-item badge  bg-orange-500 text-white ">{cart.length}</span>
             <p className="mt-4 text-2xl "><IoIosCart /></p>
           </div>
@@ -56,8 +56,13 @@ const Header = () => {
             user?.email ?
               <>
 
-                <span className='text-orange-500 font-bold text-lg  font-serif pt-2 mx-2'
-                >{user?.displayName}</span>
+                {/* <span className='text-orange-500 font-bold text-lg  font-serif pt-2 mx-2'
+                >{user?.displayName}</span> */}
+                 <div tabIndex={0} role="button" className="btn online ms-2 ring-2 btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img alt="pic" src={user.photoURL? user?.photoURL : "https://i.ibb.co/JsfTHfK/06e6ddb0-1e45-44b8-8143-36f3f6e68550.png"} />
+                            </div>
+                        </div>
                 <span className=''><button className='btn btn-ghost font-bold bg-orange-500 text-white font-serif ms-4' onClick={handleLogOut}>Logout</button></span>
               </>
               :

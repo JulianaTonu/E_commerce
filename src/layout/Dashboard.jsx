@@ -53,9 +53,9 @@ const Dashboard = () => {
                     </div>
                    
                     <div className="dropdown dropdown-end">
-                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                        <div tabIndex={0} role="button" className="btn online  ring-2 btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img alt="pic" src={user.photoURL? user?.photoURL : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"} />
+                                <img alt="pic" src={user.photoURL? user?.photoURL : "https://i.ibb.co/JsfTHfK/06e6ddb0-1e45-44b8-8143-36f3f6e68550.png"} />
                             </div>
                         </div>
                         <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
@@ -87,11 +87,7 @@ const Dashboard = () => {
                                             <FaUser /> Admin Home
                                         </NavLink>
                                     </li>
-                                    <li className="hover:text-orange-500">
-                                        <NavLink to='dashboard/cart'>
-                                            <FaShoppingCart /> My Cart
-                                        </NavLink>
-                                    </li>
+                                    
                                     <li className="hover:text-orange-500">
                                         <NavLink to='addItems'>
                                             <FaList /> Add Items
@@ -102,11 +98,11 @@ const Dashboard = () => {
                                             <FaAddressBook /> Manage Items
                                         </NavLink>
                                     </li>
-                                    <li className="hover:text-orange-500">
+                                    {/* <li className="hover:text-orange-500">
                                         <NavLink to='manageBookings'>
                                             <FaAddressBook /> Manage Bookings
                                         </NavLink>
-                                    </li>
+                                    </li> */}
                                     <li className="hover:text-orange-500">
                                         <NavLink to='allUsers'>
                                             <FaUsers /> All Users
@@ -148,10 +144,7 @@ const Dashboard = () => {
                             <FaUser></FaUser>
                             Home</NavLink>
                         </li>
-                        <li><NavLink to='/items'>
-                            <FaUser></FaUser>
-                            Items</NavLink>
-                        </li>
+                       
                     </ul>
                 </div>
 

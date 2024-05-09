@@ -1,51 +1,20 @@
-import  { useState, useEffect } from "react";
+
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { FaAddressBook } from "react-icons/fa";
 import { MdHome } from "react-icons/md";
 import { FaPhone } from "react-icons/fa6";
 
-function padZero(number) {
-  return number < 10 ? `0${number}` : number;
-}
+
 
 const UserDashboard = () => {
   const { user } = useContext(AuthContext);
-  const [countdown, setCountdown] = useState({ days: 10, hours: 9, minutes: 3, seconds: 0 });
-
-  useEffect(() => {
-    const countdownInterval = setInterval(() => {
-      setCountdown(prevCountdown => {
-        let { days, hours, minutes, seconds } = prevCountdown;
-        seconds--;
-        if (seconds < 0) {
-          seconds = 59;
-          minutes--;
-          if (minutes < 0) {
-            minutes = 59;
-            hours--;
-            if (hours < 0) {
-              hours = 23;
-              days--;
-              if (days < 0) {
-                clearInterval(countdownInterval);
-                return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-              }
-            }
-          }
-        }
-        return { days, hours, minutes, seconds };
-      });
-    }, 1000);
-
-    return () => clearInterval(countdownInterval);
-  }, []);
-
+  
   return (
     <div>
       <div className="flex items-center ">
-        <h2 className="me-3 text-2xl">Hi, Welcome </h2>
-        <p className="text-4xl capitalize text-orange-600">{user?.displayName ? user.displayName : ""}</p>
+        <h2 className="me-3 text-2xl mb-2">Hi, Welcome Back</h2>
+        {/* <p className="text-4xl capitalize text-orange-600">{user?.displayName ? user.displayName : ""}</p> */}
       </div>
 
       <div className="flex gap-3 my-5">
@@ -85,25 +54,17 @@ const UserDashboard = () => {
           </div>
         </div>
       </div>
+<div className="w-1/2 bg-slate-100 pt-16 pb-12 text-center p-4">
+<div className="avatar online ">
+  <div className="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+    <img src={user.photoURL? user?.photoURL : "https://i.ibb.co/JsfTHfK/06e6ddb0-1e45-44b8-8143-36f3f6e68550.png"} />
+  </div>
+</div>
+<h1 className="text-2xl mt-3 ms-3 capitalize font-semibold"> {user?.displayName}</h1>
+<p className="text-lg mt-3 ms-3  font-semibold"> {user?.email}</p>
+</div>
 
-      <div className="flex gap-5">
-        <div>
-          <span className="countdown font-mono text-4xl">{padZero(countdown.days)}</span>
-          days
-        </div>
-        <div>
-          <span className="countdown font-mono text-4xl">{padZero(countdown.hours)}</span>
-          hours
-        </div>
-        <div>
-          <span className="countdown font-mono text-4xl">{padZero(countdown.minutes)}</span>
-          min
-        </div>
-        <div>
-          <span className="countdown font-mono text-4xl">{padZero(countdown.seconds)}</span>
-          sec
-        </div>
-      </div>
+<div className="w-1/2"></div>
     </div>
   );
 };
