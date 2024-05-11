@@ -21,6 +21,7 @@ import ProductDetails from "../components/Home/PopularProduct/ProductDetails";
 import Payment from "../components/Dashboard/Payment/Payment";
 import PaymentHistory from "../components/Dashboard/PaymentHistory/PaymentHistory";
 import UserDashboard from "../components/Dashboard/UserDashboard/UserDashboard";
+import AllProducts from "../components/Home/AllProducts";
 // import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
                 element: <Kids></Kids>
             },
             {
+                path: "/allProducts",
+                element: <AllProducts></AllProducts>
+            },
+            {
                 path: "/login",
                 element: <Login></Login>
             },
@@ -55,22 +60,22 @@ export const router = createBrowserRouter([
             {
                 path: "/productDetails/:id",
                 element: <ProductDetails></ProductDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
+                loader: ({ params }) => fetch(`https://e-commerce-server-side-ashen.vercel.app/product/${params.id}`)
             },
             {
                 path: "/MenItemsDetails/:id",
                 element: <MenDetails></MenDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
+                loader: ({ params }) => fetch(`https://e-commerce-server-side-ashen.vercel.app/product/${params.id}`)
             },
             {
                 path: "/WomenDetails/:id",
                 element: <WomenDetails></WomenDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
+                loader: ({ params }) => fetch(`https://e-commerce-server-side-ashen.vercel.app/product/${params.id}`)
             },
             {
                 path: "/kidDetails/:id",
                 element: <KidDetails></KidDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
+                loader: ({ params }) => fetch(`https://e-commerce-server-side-ashen.vercel.app/product/${params.id}`)
             },
         ]
     },
@@ -115,7 +120,7 @@ export const router = createBrowserRouter([
             {
                 path: 'updateItems/:id',
                 element: <UpdateItems></UpdateItems>,
-                loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
+                loader: ({ params }) => fetch(`https://e-commerce-server-side-ashen.vercel.app/product/${params.id}`)
             },
 
             {

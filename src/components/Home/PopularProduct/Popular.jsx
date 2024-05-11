@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useProduct from "../../../hooks/useProduct";
 import Item from "./Item";
 import { FaArrowRight } from "react-icons/fa";
@@ -19,9 +20,10 @@ const PopularSection = () => {
                 </div>
             </div>
             <div className="mt-10 text-center  flex justify-center">
-                <button className="p-3 rounded-xl shadow-md hover:bg-black text-white font-semibold bg-orange-500 px-8  flex text-center">
+               <Link to='/allProducts'>
+               <button className="p-3 rounded-xl shadow-md hover:bg-black text-white font-semibold bg-orange-500 px-8  flex text-center">
                     <span className="flex items-center">See all <p className="ml-3 animate-pulse"><FaArrowRight /></p></span>
-                </button>
+                </button></Link>
             </div>
 
         </div>

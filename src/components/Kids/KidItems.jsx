@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const KidItems = ({item}) => {
     const { _id, productName, img, oldPrice,newPrice}=item  
     return (
-        <div className="card w-72  ">
+        <div className="card w-72">
             <figure className=" ">
                 <Link to={`/kidDetails/${_id}`}><img src={img} alt="" className="rounded-md border bg-slate-300 h-80 w-80 hover:scale-125 transition-all duration-500 cursor-pointer" /></Link>
             </figure>
@@ -18,8 +18,8 @@ const KidItems = ({item}) => {
                     <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                 </div>
                 <div className="flex gap-4 text-center justify-center">
-                    <p className="text-lg">{newPrice}</p>
-                    <p className="text-[#da8214] bold font-semibold line-through mt-1">{oldPrice}</p>
+                    <p className="text-lg">${newPrice}</p>
+                    <p className="text-[#da8214] bold font-semibold line-through mt-1">${oldPrice}</p>
                 </div>
 
             </div>
