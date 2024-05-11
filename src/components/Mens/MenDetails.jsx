@@ -20,7 +20,8 @@ const MenDetails = () => {
                 email:user.email,
                 productName,
                 img,
-                price:newPrice
+                price:newPrice,
+                qty:1
             }
             axiosSecure.post('/carts',cartItem)
             .then(res=>{

@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 
@@ -21,7 +21,8 @@ const ProductDetails = () => {
                 email: user.email,
                 productName,
                 img,
-                price: newPrice
+                price: newPrice,
+                qty:1
             }
             axiosSecure.post('/carts', cartItem)
                 .then(res => {
@@ -78,9 +79,10 @@ const ProductDetails = () => {
                 <button onClick={() => handleAddToCart(products)} className="p-3 rounded-xl shadow-md hover:bg-black text-white font-semibold bg-orange-500 px-8  flex text-center">
                     <span className="flex items-center">Add to cart </span>
                 </button>
-                <button className=" ms-3 p-3 rounded-xl shadow-md  text-white font-semibold bg-black px-10  flex text-center">
+                <Link to='/dashboard/dashboard/cart'>
+                <button onClick={() => handleAddToCart(products)}  className=" ms-3 p-3 rounded-xl shadow-md  text-white font-semibold bg-black px-10  flex text-center">
                     <span className="flex items-center">Buy now </span>
-                </button>
+                </button></Link>
             </div>
 
         </div>
