@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Item = ({item}) => {
     const { _id, productName, img, oldPrice,newPrice}=item 
     return (
-        <div className="card w-72  ">
+        <div className="card lg:w-72 ">
         <figure className=" ">
             <Link to={`/productDetails/${_id}`}><img src={img} alt="" className="rounded-md border bg-slate-300 h-80 w-80 hover:scale-125 transition-all duration-500 cursor-pointer" /></Link>
         </figure>
