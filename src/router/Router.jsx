@@ -22,6 +22,7 @@ import Payment from "../components/Dashboard/Payment/Payment";
 import PaymentHistory from "../components/Dashboard/PaymentHistory/PaymentHistory";
 import UserDashboard from "../components/Dashboard/UserDashboard/UserDashboard";
 import AllProducts from "../components/Home/AllProducts";
+import AddReview from "../components/AddReview/AddReview";
 // import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -75,6 +76,11 @@ export const router = createBrowserRouter([
             {
                 path: "/kidDetails/:id",
                 element: <KidDetails></KidDetails>,
+                loader: ({ params }) => fetch(`https://e-commerce-server-side-ashen.vercel.app/product/${params.id}`)
+            },
+            {
+                path: "/review/:id",
+                element: <AddReview></AddReview>,
                 loader: ({ params }) => fetch(`https://e-commerce-server-side-ashen.vercel.app/product/${params.id}`)
             },
         ]

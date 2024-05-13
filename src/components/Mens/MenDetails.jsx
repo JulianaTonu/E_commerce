@@ -1,6 +1,6 @@
 
-import { useContext } from "react";
-import { useLoaderData, useLocation, useNavigate} from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useLoaderData, useLocation, useNavigate} from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
@@ -12,6 +12,8 @@ const MenDetails = () => {
     const navigate =useNavigate()
     const location =useLocation()
     const axiosSecure=useAxiosSecure()
+    const [reviews, setReviews]=useState([])
+
     const handleAddToCart = product => {
         if(user && user.email){
             //send cart item to the database
@@ -56,8 +58,29 @@ const MenDetails = () => {
         }
         console.log(product)
     }
+
+    useEffect(()=>{
+
+        fetch(`https://e-commerce-server-side-ashen.vercel.app/reviews/product?productName=${productName}`)
+        .then(res=>res.json())
+        .then(data=>setReviews(data))
+    },[productName])
+
+ //toast for unregister user
+ const handleToast=()=>{
+    return Swal.fire({
+        position: "top-middle",
+        icon: "error",
+        title: `Please Login to add Review`,
+        showConfirmButton: false,
+        timer: 1500
+    });
+        
+        
+    }
     return (
-        <div className="md:flex bg-slate-100 mt-4">
+        <div>
+            <div className="md:flex bg-slate-100 mt-4">
         <div className="md:w-10/12 ">
             <img src={img} alt="" className="lg:w-[550px]" />
         </div>
@@ -85,6 +108,42 @@ const MenDetails = () => {
         </div>
 
     </div>
+
+      {/* // Add Review */}
+<div className=" text-end my-5"> 
+{
+          user?.email ?
+          <>
+          <Link to={`/review/${_id}`}> <button className="btn btn-primary">Add Review</button></Link>
+          
+          </>
+            :
+           <>
+               <Link to=''> <button onClick={handleToast} className="btn btn-primary disabled:">Add Review</button></Link>
+              
+                </>
+          }
+
+
+<div className='grid grid-cols-1 lg:grid-cols-2 gap-y-4 text-start'>
+{
+reviews.map(review=><div key={review._id} className="flex   border-solid border-2 border-orange-600 p-4 rounded-xl m-3">
+<div className="avatar">
+  <div className="mask mask-squircle w-12 h-12">
+    <img src={review.image}  alt=''/>
+  </div>
+</div>
+<div className="ms-4">
+  <div className="font-bold">{review.user? review.user : review.email}</div>
+  <div className="font-semibold opacity-45">{review.myDate}</div>
+  <div className="text-sm opacity-80">{review.message}</div>
+  
+</div>
+</div>)
+}
+</div>
+</div>
+        </div>
     );
 };
 

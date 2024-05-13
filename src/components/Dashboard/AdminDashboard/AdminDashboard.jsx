@@ -74,9 +74,10 @@ const AdminDashboard = () => {
                 user?.displayName ? user.displayName :''
             }</p>
         </div>
-            <div className="md:flex gap-2">
 
-                <div className="shadow-lg w-64 h-32 p-2 mb-3 bg-yellow-200 flex flex-col items-center justify-center">
+            <div className="md:flex gap-2 items-center ">
+
+                <div className="shadow-lg mx-auto md:w-64 w-80 h-32 p-2 mb-3 bg-yellow-200 flex flex-col items-center justify-center">
                     <h1 className="text-3xl gap-2 my-3">${stats?.revenue}</h1>
                     <div className="flex justify-between w-full">
                         <div>
@@ -88,7 +89,7 @@ const AdminDashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className="shadow-lg w-64 p-2 mb-3 bg-green-200 flex flex-col items-center justify-center">
+                <div className="shadow-lg mx-auto md:w-64 w-80 p-2 mb-3 bg-green-200 flex flex-col items-center justify-center">
                     <h1 className="text-3xl gap-2 my-3">{stats?.orders}</h1>
                     <div className="flex justify-between w-full">
                         <div>
@@ -101,7 +102,7 @@ const AdminDashboard = () => {
                     </div>
                 </div>
 
-                <div className="shadow-lg w-64 p-2 mb-3 bg-red-200 flex flex-col items-center justify-center">
+                <div className="shadow-lg mx-auto md:w-64 w-80 p-2 mb-3 bg-red-200 flex flex-col items-center justify-center">
                     <h1 className="text-3xl gap-2 my-3">{stats?.users}</h1>
                     <div className="flex justify-between w-full">
                         <div>
@@ -115,7 +116,7 @@ const AdminDashboard = () => {
                 </div>
 
 
-                <div className="shadow-lg w-64 p-2 mb-3 bg-blue-200 flex flex-col items-center justify-center">
+                <div className="shadow-lg mx-auto md:w-64 w-80 p-2 mb-3 bg-blue-200 flex flex-col items-center justify-center">
                     <h1 className="text-3xl gap-2 my-3">{stats?.products}</h1>
                     <div className="flex justify-between w-full">
                         <div>
@@ -153,7 +154,7 @@ const AdminDashboard = () => {
                         </Bar>
                     </BarChart>
                 </div>
-                <div className="w-1/2 bg-slate-100 mt-5 rounded-md">
+                <div className="md:w-1/2 bg-slate-100 mt-5 rounded-md">
                     <PieChart
                         width={400}
                         height={400}>
