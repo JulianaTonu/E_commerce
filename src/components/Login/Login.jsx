@@ -43,7 +43,7 @@ const Login = () => {
           <p className="py-6 text-slate-100 lg:px-3">Provident cupiditate voluptatem etin.Quaerat fugiat ut  assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
           <img src={pic} alt="" className='lg:h-80 h-72  mx-auto mt-16' />
         </div>
-        <div className="card shrink-0 w-full max-w-sm   ">
+        <div className="card shrink-0 w-full max-w-xs">
           <form onSubmit={handleLogin} className="">
             <div className="form-control">
               <h1 className="md:text-5xl text-3xl text-orange-500 text-center mb-10 font-bold "> Login</h1>
